@@ -1,0 +1,57 @@
+* ROS bags to chainage (MWD)
+** Step 1: =lantern-get=
+First we get the image timestamps with =lantern-get=:
+#+BEGIN_SRC bash
+lantern-get csv --input-directory=/mnt/pond/datasets/mwd/iron-mountain-pump-plant/2019-12-16.inspection/day-1/delivery-pipe-1/lantern-eye/run-01-scout/lem-02/bags --output-directory=- --topics="lem_02/camera_0/abyss_img_params;fields=header.stamp,header.seq,header.frame_id" | csv-sort --fields=t > delivery-pipe-1/camera.metadata.csv
+#+END_SRC
+- *note: change topics to lem_01 or lem_02 or whatever as necessary*
+- csv-sort will sort all this data by the first field, which we tell it is a timestamp
+
+
+Now we get depth data in a similar way:
+#+BEGIN_SRC bash
+lantern-get csv --input-directory=/mnt/pond/datasets/mwd/iron-mountain-pump-plant/2019-12-16.inspection/day-1/delivery-pipe-1/lantern-eye/run-01-scout/lem-02/bags --output-directory=- --topics="position" | csv-sort --fields=t > delivery-pipe-1/position.metadata.csv
+#+END_SRC
+
+
+** Step 2: =csv-time-join=
+Now we join these two csv files into one. There are many more entries in the position metadata so we will join them together based on the camera metatdata.
+#+BEGIN_SRC bash
+cat delivery-pipe-1/camera.metadata.csv | csv-time-join --fields=t "delivery-pipe-1/position.metadata.csv;fields=t" --nearest | cut -d, -f1,6 > delivery-pipe-1/camera.position.csv
+#+END_SRC
+
+
+** Step 3: =chainage_from_depth.py=
+Now we invoke csv-refine.py to take in the camera.position.csv generated in the previous step, and rectify depth to start at 0 and calculate chainage
+#+BEGIN_SRC bash
+python3 chainage_from_depth.py --input_csv=iron/delivery-pipe-1/camera.position.csv --output_csv=iron/delivery-pipe-1/rectified-depth-chainage.csv --profile_csv=iron/profile.csv
+#+END_SRC
+
+
+** Step 4: make a text file for the next step
+#+BEGIN_SRC bash
+cat delivery-pipe-1/rectified-depth-chainage.csv | cut -d, -f3 > delivery-pipe-1/chainages.txt
+#+END_SRC
+
+
+** Step 5: =lantern-get video=
+Finally, we burn the chainage onto the video
+#+BEGIN_SRC bash
+ls /mnt/pond/datasets/mwd/iron-mountain-pump-plant/2019-12-16.inspection/day-1/delivery-pipe-1/lantern-eye/run-01-scout/lem-02/camera-0/*.ppm | lantern-get video --filter="bayer=3;convert-to=3f;linear-combination=3.02r,1g,1.21b;brightness=10;resize=1028,752;convert-to=3ub,0.0039;text=,80,80,red,filename:delivery-pipe-1/chainages.txt" --dry-run
+#+END_SRC
+
+
+* Data extraction (POM)
+** =lantern-get video= for overview
+To make videos relatively quickly for overviewing data, go into directory of ppms and run:
+#+BEGIN_SRC bash
+ls *.ppm | lantern-get video --filter="bayer=3;convert-to=3f;linear-combination=3.02r,1g,1.21b;brightness=5;resize=1028,752;convert-to=3ub,0.0039" --output faulkner-beacon-1.mp4
+#+END_SRC
+By using =--view= instead of the output command, you can view it instead
+
+** =convert-selected-ppms.sh= and =lantern-get images= for junaid
+=convert-selected-ppms.sh= is located in projects/port-of-melbourne. It has help in the comments. To convert the images specified by Junaid to .pngs:
+#+BEGIN_SRC bash
+input_directory=/mnt/pond/datasets/port-of-melbourne/port-of-melbourne/20200203/inspections/hbms-protection-plates/20200206/lantern-eye/steel-plates-transect-03/lem-02/camera-0; ls $input_directory | sed "s#.ppm##" | csv-select --fields t "t;from=20200206T013720.042969" "t;to=20200206T013930.043220" | sed 's#$#.ppm#' | lantern-get images --filter="bayer=3;convert-to=3f;linear-combination=3.02r,1g,1.6b;brightness=5;convert-to=3ub,0.0039;clahe=2.5,9,9" --input-directory $input_directory --output-directory /mnt/pond/processed/port-of-melbourne/20200203/inspections/hbms-protection-plates/interim-images
+#+END_SRC
+
