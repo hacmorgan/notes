@@ -22,8 +22,16 @@ This has been working great, currently leaving the master branch as the desktop 
 *** TODO Contribute to i3status-rust 
 **** TODO Determine if the project is too advanced
 *** TODO COntribute to ROSrust
-** C
-*** TODO Work through CK&R
+
+** Linux
+*** TODO Linux From Scratch
+*** TODO Understanding the Linux Kernel
+Do this after LFS, it might make understanding some of its content easier
+*** TODO Read through kernel docs
+After /Understanding the Linux Kernel/, as it should lay the foundations for
+making sense of the more contemporary documentation
+** Assembler
+*** TODO x86 Assembler tutorial (YouTube)
 
 
 * Building Stuff
@@ -37,14 +45,18 @@ This has been working great, currently leaving the master branch as the desktop 
 ** Contemporary
 *** RTEMS Quick Start Guide
 **** TODO Review email from Chris to determine if can proceed
-
+** Ben Eater Tutorials
+*** TODO Hello World on a 6502
+Order both this kit and the homemade clock kit too. It would be cool to have an
+oscilloscope by then, but not fully necessary.
 
 * Other people's projects
 ** Tour Calculator
 
 
 * Completed
-None 
+** C
+*** TODO Work through CK&R
 
 
 * Abandoned
