@@ -19,9 +19,9 @@ This has been working great, currently leaving the master branch as the desktop 
 ** Rust
 *** DONE Rust by example
 *** DONE csv-plot
-*** TODO Algorithms course
 *** TODO Contribute to i3status-rust 
-**** TODO Determine if the project is too advanced
+**** DONE Determine if the project is too advanced
+For now, this may be true. Maybe cover the kernel and pwnable first?
 *** TODO Contribute to ROSrust
 
 
@@ -30,7 +30,7 @@ This has been working great, currently leaving the master branch as the desktop 
 *** TODO Understanding the Linux Kernel
 Do this after LFS, it might make understanding some of its content easier
 *** TODO Read through kernel docs
-After /Understanding the Linux Kernel/, as it should lay the foundations for
+Do this after /Understanding the Linux Kernel/, as it should lay the foundations for
 making sense of the more contemporary documentation
 
 
@@ -45,10 +45,16 @@ making sense of the more contemporary documentation
 *** TODO Metrology
 
 
+* Algorithms
+** TODO MIT algorithms course
+
+
+* Software Design
+
 * Security
 ** TODO pwnable.kr
 
-
+   
 * Embedded
 ** Contemporary
 *** RTEMS Quick Start Guide
@@ -59,9 +65,6 @@ Order both this kit and the homemade clock kit too. It would be cool to have an
 oscilloscope by then, but not fully necessary.
 *** TODO 8-bit computer
 Order components
-*** TODO homemade video card
-**** TODO Watch first few videos to determine if I want to do this
-
 ** Pomodoro
 - Build a simple pomodoro timer from scratch using either
   - a microprocessor (e.g. 6502), using assembly
