@@ -17,11 +17,13 @@ This has been working great, currently leaving the master branch as the desktop 
 
 * Programming Languages
 ** Rust
-*** TODO Rust by example
+*** DONE Rust by example
+*** DONE csv-plot
 *** TODO Algorithms course
 *** TODO Contribute to i3status-rust 
 **** TODO Determine if the project is too advanced
-*** TODO COntribute to ROSrust
+*** TODO Contribute to ROSrust
+
 
 ** Linux
 *** TODO Linux From Scratch
@@ -30,15 +32,21 @@ Do this after LFS, it might make understanding some of its content easier
 *** TODO Read through kernel docs
 After /Understanding the Linux Kernel/, as it should lay the foundations for
 making sense of the more contemporary documentation
+
+
 ** Assembler
 *** TODO x86 Assembler tutorial (YouTube)
 
 
 * Building Stuff
-** [[~/src/projects/pelicomputer/plan.org][Pelicomp v1.0]]
+** TODO [[~/src/projects/pelicomputer/plan.org][Pelicomp v1.0]]
 ** FreeCAD
-*** Tutorial
-*** Metrology
+*** TODO Tutorial
+*** TODO Metrology
+
+
+* Security
+** TODO pwnable.kr
 
 
 * Embedded
@@ -49,6 +57,17 @@ making sense of the more contemporary documentation
 *** TODO Hello World on a 6502
 Order both this kit and the homemade clock kit too. It would be cool to have an
 oscilloscope by then, but not fully necessary.
+*** TODO 8-bit computer
+Order components
+*** TODO homemade video card
+**** TODO Watch first few videos to determine if I want to do this
+
+** Pomodoro
+- Build a simple pomodoro timer from scratch using either
+  - a microprocessor (e.g. 6502), using assembly
+  - from scratch like the 8-bit computer.
+- Probably need to watch a few more videos before doing this
+
 
 * Other people's projects
 ** Tour Calculator
@@ -56,7 +75,7 @@ oscilloscope by then, but not fully necessary.
 
 * Completed
 ** C
-*** TODO Work through CK&R
+*** DONE Work through CK&R
 
 
 * Abandoned
