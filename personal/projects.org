@@ -38,6 +38,11 @@ making sense of the more contemporary documentation
 *** TODO x86 Assembler tutorial (YouTube)
 
 
+** c++
+*** TODO work on match-images functionality
+First in Python, then translate to c++
+
+
 * Building Stuff
 ** TODO [[~/src/projects/pelicomputer/plan.org][Pelicomp v1.0]]
 ** FreeCAD
@@ -50,6 +55,7 @@ making sense of the more contemporary documentation
 
 
 * Software Design
+
 
 * Security
 ** TODO pwnable.kr
