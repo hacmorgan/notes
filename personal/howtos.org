@@ -1,0 +1,8 @@
+A collection of random how-tos, to avoid having to re-find stuff on google.
+
+* ffmpeg
+** extract frames from video
+This snippet will extract every frame of the video, to files with 4-digit names. There are ways to take only some of the images, and ways to increase performance in that situation too, on [[https://stackoverflow.com/questions/10957412/fastest-way-to-extract-frames-using-ffmpeg][Stack Overflow]].
+#+begin_src bash
+ffmpeg -i <video_name> %04d.png
+#+end_src

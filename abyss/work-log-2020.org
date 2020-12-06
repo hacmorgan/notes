@@ -1,0 +1,46 @@
+* Longer term TODOs
+** TODO basic-metashape: add --list-export-filetypes (for mesh and pointcloud)
+** TODO lantern-photogrammetry: autoset seqview to Camera On Demand
+** TODO lantern-photogrammetry: remove need for --force when using --dry-run
+
+* Week starting <2020-11-30 Mon>
+Projects this week:
+- CHEV002: Data processing
+
+** <2020-11-30 Mon> - CHEV002: Point cloud generation and cleaning
+   *CHEV002* 
+*** DONE Meet with Asif to discuss next steps
+He will clean K-node then start with Polyworks.
+*** DONE /work-basket.standoff.01/: realign cameras and rebuild dense cloud
+- This fixed the bad alignment issue
+- There are small patches of bad reconstruction at the top, but otherwise it seems quite good
+*** DONE /stairway.cvi.01/: realign cameras and rebuild dense cloud
+The stairway CVI dataset did not reconstruct properly, even with sequential matching.
+*** DONE /stairway.standoff.02/: align cameras
+This is a better reconstruction then the CVI dataset, but it still isn't perfect.
+*** DONE /stairway.cvi-standoff-combined/: aggregate logs
+No reconstruction performed, not yet sure if we will use this.
+
+
+** <2020-12-01 Tue> - CHEV002: Point cloud cleaning and investigating better alignment
+   *CHEV002*
+*** TODO Work basket: assess difference in quality when using colour balanced images
+**** DONE Move images to /images-original/, and make directory /images-balanced/ for colour balanced images
+**** DONE Colour balance images
+**** TODO Duplicate chunk, realign images, and regenerate dense cloud
+**** TODO Compare to other chunk
+*** TODO Work basket: finish cleaning model, determine if it is of acceptable quality
+*** DONE K-node: check that full coverage has been achieved (it has)
+*** TODO continue cleaning k-node
+finally it is clean. There is actually some ghosting, but it is minor. The mesh looks quite good.
+*** *Problems*
+- Lack of metashape licenses (hard to work in parallel)
+- Broken API (metashape-cli would fix this)
+
+** <2020-12-02 Wed> - CHEV002: more pointcloud cleaning
+*** TODO daheng-air: improve colour balance filter params
+*** DONE K-node: clean pointcloud further
+*** DONE K-node: run texture generation on further cleaned pointcloud
+*** DONE K-node: export dense cloud and texture for Asif
+*** TODO K-node: aggregate standoff and cvi, run full pipeline, investigate quality
+*** K-node: run alignment with colour balanced images

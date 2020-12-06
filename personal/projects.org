@@ -15,10 +15,16 @@ This has been working great, currently leaving the master branch as the desktop 
 *** TODO Copy cmake stuff from Bedrock in order to install utilities
     
 
+* Non-technical
+** Resume
+Write in ORG mode, translate to LaTeX and HTML
+
 * Programming Languages
 ** Rust
 *** DONE Rust by example
 *** DONE csv-plot
+*** TODO redox (Rust OS)
+Try to boot from a USB. It should handle a PS/2 keyboard (yay!). This is not likely to replace Linux (just yet), but there is lots to work on. Would be a good project to learn about OSes and Rust.
 *** TODO Contribute to i3status-rust 
 **** DONE Determine if the project is too advanced
 For now, this may be true. Maybe cover the kernel and pwnable first?
@@ -38,7 +44,7 @@ making sense of the more contemporary documentation
 *** TODO x86 Assembler tutorial (YouTube)
 
 
-** c++
+** C++
 *** TODO work on match-images functionality
 First in Python, then translate to c++
 
@@ -55,7 +61,7 @@ First in Python, then translate to c++
 
 
 * Software Design
-
+  
 
 * Security
 ** TODO pwnable.kr
