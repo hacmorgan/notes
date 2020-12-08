@@ -9,15 +9,32 @@ This does hinge to a certain extent on the potential for different platforms to 
 
 With that said, there is also a chance git branches won't work perfectly for this, as they /seem/ to be slightly more specialised for maintaining a code base. For this reason, the git branching thing should be the first thing investigated here.
 
-*** TODO Transition some configs to a branching system to test if suitable
+*** DONE Transition some configs to a branching system to test if suitable
 This has been working great, currently leaving the master branch as the desktop config, and having separate branches for everything else.
 
 *** TODO Copy cmake stuff from Bedrock in order to install utilities
     
+** TODO migration to Gentoo
+*** TODO install hantek software
+- pulseview
+- driver is mentioned somewhere in Pocket
+*** TODO notify-send
+** TODO transition to hq repo
+*** TODO copy master configs from useful-scripts, ensure they are generic
+*** TODO create named branches (per new hostnames) with their specific code
+diff the useful-scripts verison
+*** TODO add a deprecation notice to useful-scripts
+
+*** TODO add a list of installed packages 
+
+
+*** TODO add a list of tracked git repos
+*** TODO use cmake to install scripts (and configs if possible)
 
 * Non-technical
 ** Resume
 Write in ORG mode, translate to LaTeX and HTML
+
 
 * Programming Languages
 ** Rust

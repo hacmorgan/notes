@@ -1,7 +1,12 @@
 * Longer term TODOs
-** TODO basic-metashape: add --list-export-filetypes (for mesh and pointcloud)
-** TODO lantern-photogrammetry: autoset seqview to Camera On Demand
-** TODO lantern-photogrammetry: remove need for --force when using --dry-run
+** TODO [#A] improve daheng-air filter
+** TODO [#B] lantern-photogrammetry: autoset seqview to Camera On Demand
+** TODO [#B] lantern-photogrammetry: remove need for --force when using --dry-run
+** TODO [#B] lantern-photogrammetry: update for 1.6.5 API (alternatively make metashape-cli)
+** TODO [#B] lantern-photogrammetry: parallelize video generation
+
+** TODO [#C] basic-metashape: add --list-export-filetypes (for mesh and pointcloud)
+** TODO [#C] =mount-shared-drives= : allow specification of drives to mount
 
 * Week starting <2020-11-30 Mon>
 Projects this week:
@@ -44,3 +49,25 @@ finally it is clean. There is actually some ghosting, but it is minor. The mesh 
 *** DONE K-node: export dense cloud and texture for Asif
 *** TODO K-node: aggregate standoff and cvi, run full pipeline, investigate quality
 *** K-node: run alignment with colour balanced images
+  
+
+* Week starting <2020-12-07 Mon>
+Projects this week:
+- CHEV002: Data processing
+
+** <2020-12-07 Mon> - CHEV002: Point cloud quantification, improving model quality for older models
+*** Point cloud corrosion quantification
+counting number of coloured points
+*** improving model quality
+Work basket models aren't yet perfect, tried auto-balancing images and running that through metashape
+  - alignment is really good
+
+** <2020-12-08 Tue> - CHEV002: Reporting
+*** TODO Review report by Asif
+*** DONE Crop transport from colour-mapped mesh
+*** TODO migrate to gentoo
+**** TODO push notes.git
+**** TODO build cloudcompare
+**** TODO build comma and snark
+**** TODO install & set up wireguard
+**** TODO install metashape & metashape pro
