@@ -1,6 +1,3 @@
 Short-term (sub-project) TODOs, grouped by area
 
 * Migration to Gentoo
-** TODO Install Hantek software
-- pulseview
-- look in pocket for other required application, can't recall what it's called

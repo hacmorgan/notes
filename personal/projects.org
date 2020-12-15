@@ -19,6 +19,10 @@ This has been working great, currently leaving the master branch as the desktop 
 - pulseview
 - driver is mentioned somewhere in Pocket
 *** TODO notify-send
+*** DONE can CUDA be installed if we allow EULA?
+No, it is maked for other reasons
+*** TODO install comma & snark
+*** TODO Wacom support
 ** TODO transition to hq repo
 *** TODO copy master configs from useful-scripts, ensure they are generic
 *** TODO create named branches (per new hostnames) with their specific code
@@ -27,9 +31,10 @@ diff the useful-scripts verison
 
 *** TODO add a list of installed packages 
 
-
 *** TODO add a list of tracked git repos
 *** TODO use cmake to install scripts (and configs if possible)
+
+
 
 * Non-technical
 ** Resume
@@ -48,15 +53,6 @@ For now, this may be true. Maybe cover the kernel and pwnable first?
 *** TODO Contribute to ROSrust
 
 
-** Linux
-*** TODO Linux From Scratch
-*** TODO Understanding the Linux Kernel
-Do this after LFS, it might make understanding some of its content easier
-*** TODO Read through kernel docs
-Do this after /Understanding the Linux Kernel/, as it should lay the foundations for
-making sense of the more contemporary documentation
-
-
 ** Assembler
 *** TODO x86 Assembler tutorial (YouTube)
 
@@ -64,6 +60,25 @@ making sense of the more contemporary documentation
 ** C++
 *** TODO work on match-images functionality
 First in Python, then translate to c++
+
+
+* Operating systems
+** Linux
+*** DONE Linux From Scratch
+LFS was a good learning experience, but would take a lot of effort to maintain as a system. Gentoo automates almost all of the boring stuff
+*** TODO Take an operating systems course
+*** TODO Understanding the Linux Kernel
+Do this after LFS, it might make understanding some of its content easier
+*** TODO Read through kernel docs
+Do this after /Understanding the Linux Kernel/, as it should lay the foundations for
+making sense of the more contemporary documentation
+
+** Gentoo
+*** TODO make ebuild for cloudcompare
+
+** Redox
+*** TODO try booting from USB
+*** TODO determine which aspects can be worked on
 
 
 * Building Stuff

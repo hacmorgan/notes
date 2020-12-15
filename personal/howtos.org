@@ -1,8 +1,14 @@
-A collection of random how-tos, to avoid having to re-find stuff on google.
+A collection of random how-to's, to avoid having to re-find stuff on google.
 
 * ffmpeg
 ** extract frames from video
 This snippet will extract every frame of the video, to files with 4-digit names. There are ways to take only some of the images, and ways to increase performance in that situation too, on [[https://stackoverflow.com/questions/10957412/fastest-way-to-extract-frames-using-ffmpeg][Stack Overflow]].
 #+begin_src bash
 ffmpeg -i <video_name> %04d.png
+#+end_src
+* jq 
+** adding an offset to all the annotations in a SeqView annotations.json
+The below code snippet adds 5 to the /begin/ and /end/ fields of every annotation in the /valid/ category
+#+begin_src bash
+cat annotations.cvi.json | jq ".valid[].begin += 5 | .valid[].end += 5"
 #+end_src

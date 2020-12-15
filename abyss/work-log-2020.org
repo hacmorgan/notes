@@ -1,13 +1,16 @@
 * Longer term TODOs
-** TODO [#A] improve daheng-air filter
+** DONE [#A] improve daheng-air filter
 ** TODO [#B] lantern-photogrammetry: autoset seqview to Camera On Demand
 ** TODO [#B] lantern-photogrammetry: remove need for --force when using --dry-run
+** TODO [#B] lantern-photogrammetry: fix ls errors (cannot find \*.psx)
 ** TODO [#B] lantern-photogrammetry: update for 1.6.5 API (alternatively make metashape-cli)
 ** TODO [#B] lantern-photogrammetry: parallelize video generation
 
-** TODO [#C] basic-metashape: add --list-export-filetypes (for mesh and pointcloud)
+** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
 ** TODO [#C] =mount-shared-drives= : allow specification of drives to mount
 
+
+   
 * Week starting <2020-11-30 Mon>
 Projects this week:
 - CHEV002: Data processing
@@ -50,7 +53,7 @@ finally it is clean. There is actually some ghosting, but it is minor. The mesh 
 *** TODO K-node: aggregate standoff and cvi, run full pipeline, investigate quality
 *** K-node: run alignment with colour balanced images
   
-
+    
 * Week starting <2020-12-07 Mon>
 Projects this week:
 - CHEV002: Data processing
@@ -63,11 +66,64 @@ Work basket models aren't yet perfect, tried auto-balancing images and running t
   - alignment is really good
 
 ** <2020-12-08 Tue> - CHEV002: Reporting
-*** TODO Review report by Asif
+*** DONE Review report by Asif
 *** DONE Crop transport from colour-mapped mesh
 *** TODO migrate to gentoo
-**** TODO push notes.git
+**** DONE push notes.git
 **** TODO build cloudcompare
 **** TODO build comma and snark
-**** TODO install & set up wireguard
-**** TODO install metashape & metashape pro
+**** DONE install & set up wireguard
+**** DONE install metashape & metashape pro
+** <2020-12-09 Wed> - CHEV002: Working on next models
+*** DONE Clean colour balanced work basket
+*** DONE build texture for work basket
+*** DONE Improving daheng-air filter
+current best: 0.5,0.5,1.5
+*** TODO run k-node with colour balanced imagery
+*** DONE run stairway with aggregated imagery
+This appears to have created a better quality reconstruction, not sure if it's perfect though.
+** <2020-12-10 Thu> - CHEV002: working on better alignment
+*** TODO generate high quality stairway model
+This worked okay, but it would be nice to try with auto-balanced images
+**** TODO Try aligning sequentially
+**** TODO Try increased priority ratio
+**** DONE Try aligning auto-balanced imagery
+*** DONE hand work basket model to Asif
+**** DONE Export decimated mesh first
+*** TODO organise calendar event to review platypus-explorer-calc
+**** TODO refamiliarise first
+*** DONE Investigate difficulty of transitioning to metashape-cli
+**** TODO email Jordan if feasible
+*** DONE email Toby
+*** DONE email Chris
+** <2020-12-11 Fri> - CHEV002: Stairway model, get the ball rolling on SW2
+*** TODO organise calendar event to review platypus-explorer-calc
+**** TODO refamiliarise first
+*** TODO email Seva about comma utils and metashape-cli
+*** DONE finish metashape-cli
+*** TODO generate high quality stairway model
+This worked okay, but it would be nice to try with auto-balanced images
+**** DONE Try aligning sequentially
+**** DONE Try increased priority ratio
+**** DONE Try aligning auto-balanced imagery
+Didn't work
+
+
+* Week starting <2020-12-14 Mon>
+** <2020-12-14 Mon> - CHEV002: finalise stairway model; SW2: start on video gen
+*** TODO produce a respectable stairway model
+None of the methods so far have worked, so we may need to combine them. At this stage it is most important to get a good alignment.
+**** TODO Try auto-balancing the 30% standoff model and realigning that
+*** TODO review image-stream-merge stuff
+*** TODO annotate links
+*** TODO export decimated model for asif
+*** TODO change bluerobotics-ping-sonar-to-csv to lt
+*** TODO play with platypus data
+*** TODO make model of only top of stairway
+** <2020-12-15 Tue> - CHEV002: stairway; SW2: video-gen; ADK005: masking
+*** TODO stairway model
+**** DONE sequential alignment
+FAIL
+**** TODO Take only the top section 
+use the /other/ annotation category to just take the top
+

@@ -1,0 +1,55 @@
+Record of problems encountered, and how they were solved 
+
+* Gentoo
+** Kernel panics during boot, issue with filesystem
+The kernel didn't have NVMe support compiled in, this fixed the problems
+
+** Feh places background in the centre of the two monitors
+Feh needed to be compiled with xinerama support, so =/etc/portage/package.use/feh= was created with contents:
+=media-gfx/feh xinerama=
+
+** Emacs wouldn't open with GUI
+had to add =gui= USE flag globally, as well as =gtk= and =xft= specifically to emacs
+** cifs (abyss-mount-share) didn't work
+*read gentoo wiki!!*
+- enable cifs in kernel config
+- emerge cifs-utils or samba, including USE flags specified on the wiki
+** wacom
+- enable wacom in kernel config
+- emerge =x11-drivers/xf86-input-wacom= to get xsetwacom
+** audio
+*** kernel
+- ALSA needs to be enabled
+- asus xonar driver compiled in
+- intel/nvidia driver compiled in
+*** userland
+- alsa-libs needs to be emerged
+
+** cuda
+cuda package was masked by the =~amd64= keyword. You can get around this by placing the below in =/etc/portage/package.accept_keywords=:
+#+begin_src config
+dev-util/nvidia-cuda-toolkit ~amd64
+#+end_src
+
+** cloudcompare couldn't find shared library
+=/etc/ld.so.conf= had =/usr/local/lib64= as a directory, which was the location of the shared object file. The solution was to run:
+#+begin_src bash
+sudo ldconfig
+#+end_src
+
+
+* Comma & snark
+** csv-eval =no module named comma=
+pomma was not on $PYTHONPATH, but that env variable is not set by default, and setting it doesn't help on Gentoo. This command will show where python looks for modules
+#+begin_src python
+import sys
+for path in sys.path: 
+    print(path)
+#+end_src
+
+This showed that python looks to =/usr/lib/python3.9/site-packages= (among other places), but not =/usr/local/lib/python3.9/site-packages=, so the easiest thing to do was change the =PYTHON_PACKAGE_INSTALL_PREFIX= in ccmake to =/usr= rather than =/usr/local=.
+
+** snark would not build because of missing parts of Boost
+This was caused because I didn't use the global USE flags for snark, so it was not compiled with support for threads (among other things)
+
+Naturally, the solution was to include all the USE flags and re-emerge boost
