@@ -1,5 +1,5 @@
 * Longer term TODOs
-** DONE [#A] improve daheng-air filter
+** TODO [#A] fix bruno .tmux.conf (or whatever is causing autosuggestions to not work)
 ** TODO [#B] lantern-photogrammetry: autoset seqview to Camera On Demand
 ** TODO [#B] lantern-photogrammetry: remove need for --force when using --dry-run
 ** TODO [#B] lantern-photogrammetry: fix ls errors (cannot find \*.psx)
@@ -7,6 +7,10 @@
 ** TODO [#B] lantern-photogrammetry: parallelize video generation
 
 ** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
+** TODO [#B] metashape-cli: predefined expressions
+*** TODO change --print-predefined-expressions to --pretty-print-expressions
+*** TODO add --print-expressions,-p to print expressions as they are defined
+*** TODO investigate predefined expressions with values
 ** TODO [#C] =mount-shared-drives= : allow specification of drives to mount
 
 
@@ -126,4 +130,8 @@ None of the methods so far have worked, so we may need to combine them. At this 
 FAIL
 **** TODO Take only the top section 
 use the /other/ annotation category to just take the top
-
+** <2020-12-16 Wed> - CHEV002: stairway; SW2: video-gen
+*** stairway model: sequential alignment for top of stairway
+*** stairway model: clean best model available
+*** platypus-explorer-calc frame-timeline: implement
+*** platypus-explorer-calc merge-streams: implement
