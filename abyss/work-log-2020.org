@@ -7,10 +7,6 @@
 ** TODO [#B] lantern-photogrammetry: parallelize video generation
 
 ** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
-** TODO [#B] metashape-cli: predefined expressions
-*** TODO change --print-predefined-expressions to --pretty-print-expressions
-*** TODO add --print-expressions,-p to print expressions as they are defined
-*** TODO investigate predefined expressions with values
 ** TODO [#C] =mount-shared-drives= : allow specification of drives to mount
 
 
@@ -57,7 +53,6 @@ finally it is clean. There is actually some ghosting, but it is minor. The mesh 
 *** TODO K-node: aggregate standoff and cvi, run full pipeline, investigate quality
 *** K-node: run alignment with colour balanced images
   
-    
 * Week starting <2020-12-07 Mon>
 Projects this week:
 - CHEV002: Data processing
@@ -112,7 +107,6 @@ This worked okay, but it would be nice to try with auto-balanced images
 **** DONE Try aligning auto-balanced imagery
 Didn't work
 
-
 * Week starting <2020-12-14 Mon>
 ** <2020-12-14 Mon> - CHEV002: finalise stairway model; SW2: start on video gen
 *** TODO produce a respectable stairway model
@@ -135,3 +129,24 @@ use the /other/ annotation category to just take the top
 *** stairway model: clean best model available
 *** platypus-explorer-calc frame-timeline: implement
 *** platypus-explorer-calc merge-streams: implement
+** <2020-12-17 Thu> - CHEV002: cleaning stairway model; SW2: finish video-gen tool
+*** TODO video-generation tool
+**** DONE finish implementation
+**** TODO write usage examples
+**** TODO send email
+
+* Week starting <2020-12-21 Mon>
+** <2020-12-21 Mon> - CHEV002: pointcloud cleaning; parallelization everywhere
+*** DONE stairway model: clean
+*** DONE platypus-explorer-calc: parallelize video generation
+speed of generation for 5x looped data:
+- *in parallel:* 56.4 seconds
+- *single-threaded:* 105.3 seconds
+*** TODO lantern-photogrammetry: parallelize video generation
+*** TODO [#B] metashape-cli: predefined expressions
+**** DONE change --print-predefined-expressions to --pretty-print-expressions
+**** DONE add --print-expressions,-p to print expressions as they are defined
+**** TODO investigate predefined expressions with values
+*** DONE try aligning some other datasets again with lower settings 
+nothing yielded particularly good results :/
+

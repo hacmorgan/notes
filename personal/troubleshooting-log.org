@@ -43,6 +43,25 @@ Needed to run the below code snippet to resize the filesystem. This can now be d
 sudo resize2fs /dev/nvme0n1p3
 #+end_src
 
+** *installing systemd-boot*
+Once on the systemd page (after forking from the main handbook), after merging the kernel sources and configuring the kernel for systemd support:
+- if the boot partition doesn't already have systemd-boot on it from another installation:
+  - install sys-fs/dosfstools in order to use =mkfs.vfat=
+  - make a FAT filesystem on the partition, e.g.
+    #+begin_src bash
+    mkfs.vfat /dev/sda1
+    #+end_src
+- run 
+  #+begin_src bash
+  bootctl install --esp-path=/boot
+  #+end_src
+- If that doesn't work:
+  _ add the =gnuefi= USE flag to sys-apps/systemd and update @world
+    #+begin_src bash
+    emerge --ask --verbose --update --deep --changed-use @world
+    #+end_src
+  
+
 * Comma & snark
 ** csv-eval =no module named comma=
 pomma was not on $PYTHONPATH, but that env variable is not set by default, and setting it doesn't help on Gentoo. This command will show where python looks for modules
