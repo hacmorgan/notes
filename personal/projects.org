@@ -24,15 +24,15 @@ No, it is maked for other reasons
 *** TODO install comma & snark
 *** TODO Wacom support
 ** TODO transition to hq repo
-*** TODO copy master configs from useful-scripts, ensure they are generic
-*** TODO create named branches (per new hostnames) with their specific code
+*** DONE copy master configs from useful-scripts, ensure they are generic
+*** DONE create named branches (per new hostnames) with their specific code
 diff the useful-scripts verison
 *** TODO add a deprecation notice to useful-scripts
 
-*** TODO add a list of installed packages 
+*** DONE add a list of installed packages 
 
 *** TODO add a list of tracked git repos
-*** TODO use cmake to install scripts (and configs if possible)
+*** use cmake to install scripts (and configs if possible)
 
 
 
@@ -87,6 +87,28 @@ making sense of the more contemporary documentation
 *** TODO Tutorial
 *** TODO Metrology
 
+** Server
+*** Components
+|-------------------------------+----------+------+----------------------------------------------------------------|
+| Name                          | Quantity | Cost | Description / Notes                                            |
+|-------------------------------+----------+------+----------------------------------------------------------------|
+| [[https://www.ebay.com/p/109599026?iid=352564880804][Intel Xeon E3-1290]]            |        1 | $95  | - Server CPU -> No inbuilt graphics, supports ECC RAM          |
+|                               |          |      | - [[https://ark.intel.com/content/www/us/en/ark/products/55452/intel-xeon-processor-e3-1290-8m-cache-3-60-ghz.html][Intel Ark Page]]                                               |
+|                               |          |      | - [[https://www.cpu-world.com/Sockets/Socket%201155%20(LGA1155).html][LGA1155 Socket CPU comparison]]                                |
+|                               |          |      | - Supports 1066/1333MHz memory                                 |
+|-------------------------------+----------+------+----------------------------------------------------------------|
+| [[https://www.ebay.com/itm/DDR3-10600R-4-8-16GB-Server-Memory-1333-1600-1866MHz-RDIMM-ECC-Registered-RAM/154050354910?_trkparms=ispr%3D1&hash=item23de1ddede:g:TU4AAOSw56ResS3f&amdata=enc%3AAQAFAAACcBaobrjLl8XobRIiIML1V4Imu%252Fn%252BzU5L90Z278x5ickkxGz2ccqatkEnoeekHqhLkYjc0Y2cqoA7fRl15hQkQC3iXjiQ5kvX2so%252BCB34DO19zB1S1o3Gi1PhriZhI98RSqK4g0YbFQ9ii3UMPrQPSwr7R6wl6BHjHSMLbaqNN%252Bw%252Bnjh5E6Y%252FmhMUMKG0S4ADN8hY%252BlOGf9k2UcKfmYm%252BhN8J9sLsHQaCtXQXRnpg1zY43Z%252BESRbK2z0x7WRWZ7KbtZyAAXNqwn058m8I1k5IC8v2Ka%252Ftag%252FWeTo0zwNbiyWRZp%252BpAPuigjLc5YmXoQ5L8vBRg8JwvKj9VkwcZ9EzIlF0LYh6REWajJLRNBhx3hMLXmuLQefOpqUy3QzO139T66CACUKACW%252BGYflY9aTmnaQsPlrpaifCII9nNySqzxwfk7JTlkMTEPZehKZwcziP4A9jWj5RN8dlWZTOhwTcRpomX%252BV73bPYahRl8EGkQffKSMsV9yt7yaKBQeyOlYKu6bxHFQDMw9QKRokMZDF2Dbp6sL5HFNN%252FlSBPr%252BrGJ0tbOYbcHgB3Q9L6G6CvM43k5%252FSDukxjKCAuU3GqlOjwPcfUHsfKWiGh%252BhD0wjbOU0iAxbeJ%252BS2vF9fGUnH3a3AAllQY4cuePyG08mBrmsmLlZitTAmltF83dDaRdXp2dQLQwOUSRYuYg9hbVozkyAVFoNC3eyIJHgfKW4WY2ty0ppwG15TToRTNLRio6XXGea7oxlV4Oem6FU0rHab7OlBwhwNDWF3X%252FJu91lGdv%252FFVDMlQnPRhrHOQLgZ33X%252FqBlHh9VrIl%252BHkG1O8S%252BdcwjIKkw%253D%253D%7Ccksum%3A1540503549109b7fa242060d4e69a2952bcc971837ef%7Campid%3APL_CLK%7Cclp%3A2334524][16GB DDR3 1333MHz ECC Memory]]  |        1 | $50  | - ECC == Error Checking and Corection. Might help with uptime? |
+|                               |          |      | - Could also go to 32GB, max supported by the Z77-x4 mobo,     |
+|                               |          |      | but with 8 threads at 1.5GB/thread, 12GB is all we need        |
+|-------------------------------+----------+------+----------------------------------------------------------------|
+| Old Radeon GPU                |        1 | $0   | - Required because CPU has no inbuilt graphics                 |
+|                               |          |      | - Might be able to play with ATI equivalent of CUDA            |
+|-------------------------------+----------+------+----------------------------------------------------------------|
+| [[https://www.scorptec.com.au/product/power-supplies/atx/85521-sst-da850-g][SilverStone 850W Power Supply]] |        1 | $199 | - Silent fan                                                   |
+|                               |          |      | - Modular cables                                               |
+|-------------------------------+----------+------+----------------------------------------------------------------|
+
+
 
 * Algorithms
 ** TODO MIT algorithms course
@@ -118,6 +140,17 @@ Order components
 
 * Other people's projects
 ** Tour Calculator
+
+** Karen blockchain
+The idea here is that: 
+- suppliers can make listings (like a marketplace) 
+- customers can also make purchases which will be captured in the blockchain
+- alternatively, the supplier and customer can place one-off contracts in the blockchain
+  - might be best if all listings contain a target field to avoid people being sniped
+    - e.g. =target: any= for open listings, and =target: cba= for a specific contractsa
+- part of the security then involves a sort of escrow 
+  - if payments must be made in conventional currencies, this has to be external, and may have other dependencies
+
 
 
 * Completed

@@ -1,0 +1,35 @@
+* Longer term TODOs
+** TODO [#A] fix bruno .tmux.conf (or whatever is causing autosuggestions to not work)
+** TODO [#B] lantern-photogrammetry: autoset seqview to Camera On Demand
+** TODO [#B] lantern-photogrammetry: remove need for --force when using --dry-run
+** TODO [#B] lantern-photogrammetry: fix ls errors (cannot find \*.psx)
+** DONE [#B] lantern-photogrammetry: update for 1.6.5 API (alternatively make metashape-cli)
+** DONE [#B] lantern-photogrammetry: parallelize video generation
+
+** TODO [#B] metashape-cli: predefined expressions
+*** DONE change --print-predefined-expressions to --pretty-print-expressions
+*** DONE add --print-expressions,-p to print expressions as they are defined
+*** TODO investigate predefined expressions with values
+** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
+** TODO [#C] =mount-shared-drives= : allow specification of drives to mount
+
+
+   
+* Week starting <2020-12-21 Mon>
+** <2021-01-05 Tue> - fix lantern-photogrammetry; review video-gen; ADK005 processing
+*** TODO branch bedrock and integrate metashape-cli for 1.6.5 compatibility
+*** DONE email zdzislaw to tee up a time for review
+*** TODO look into adk005 processing
+Look at the datasets, read Jordan's notes
+
+** <2021-01-06 Wed> - finish lantern-photogrammetry fix; ADK005 testing
+*** DONE finish fixing lantern-photogrammetry
+This will involve fixing metashape-cli, as we are still getting /RuntimeError: not enough cameras/
+-> caused by not appending .psx for metashape-cli process
+*** TODO test reconstruction with 3 links at a time
+There should be some processed data on Pond, start there.
+- seqview was down! Took some work to make a local instance
+- got up to labelling, will talk to asif tomorrow
+*** TODO set up local seqview instance
+- add prefs folder in root directory of seqview
+  

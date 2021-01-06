@@ -4,8 +4,12 @@
 ** TODO [#B] lantern-photogrammetry: remove need for --force when using --dry-run
 ** TODO [#B] lantern-photogrammetry: fix ls errors (cannot find \*.psx)
 ** TODO [#B] lantern-photogrammetry: update for 1.6.5 API (alternatively make metashape-cli)
-** TODO [#B] lantern-photogrammetry: parallelize video generation
+** DONE [#B] lantern-photogrammetry: parallelize video generation
 
+** TODO [#B] metashape-cli: predefined expressions
+*** DONE change --print-predefined-expressions to --pretty-print-expressions
+*** DONE add --print-expressions,-p to print expressions as they are defined
+*** TODO investigate predefined expressions with values
 ** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
 ** TODO [#C] =mount-shared-drives= : allow specification of drives to mount
 
@@ -142,7 +146,6 @@ use the /other/ annotation category to just take the top
 speed of generation for 5x looped data:
 - *in parallel:* 56.4 seconds
 - *single-threaded:* 105.3 seconds
-*** TODO lantern-photogrammetry: parallelize video generation
 *** TODO [#B] metashape-cli: predefined expressions
 **** DONE change --print-predefined-expressions to --pretty-print-expressions
 **** DONE add --print-expressions,-p to print expressions as they are defined
@@ -150,3 +153,13 @@ speed of generation for 5x looped data:
 *** DONE try aligning some other datasets again with lower settings 
 nothing yielded particularly good results :/
 
+** <2020-12-22 Tue> - CHEV002: analysis; lantern-photogrammetry parallelization
+*** DONE lantern-photogrammetry: parallelize video generation
+*** TODO perform analysis on annotated meshes
+
+** <2020-12-23 Wed> - CHEV002: Last analysis, script fixes (mostly lantern-photogrammetry) 
+*** DONE CHEV002: run analysis on all models
+*** TODO [#B] lantern-photogrammetry: autoset seqview to Camera On Demand
+*** TODO [#B] lantern-photogrammetry: remove need for --force when using --dry-run
+*** TODO [#B] lantern-photogrammetry: fix ls errors (cannot find \*.psx)
+*** TODO [#B] lantern-photogrammetry: update for 1.6.5 API (alternatively make metashape-cli)
