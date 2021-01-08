@@ -108,6 +108,25 @@ making sense of the more contemporary documentation
 |                               |          |      | - Modular cables                                               |
 |-------------------------------+----------+------+----------------------------------------------------------------|
 
+*** TODO order a reasonably long hdmi cable
+*** DONE install comma, snark and bedrock
+*** TODO em upgrade
+**** TODO add =--terminal,-t= (replacing tem)
+**** TODO add =--george,-g=
+**** TODO add =--buffalo,-b=
+*** TODO create phone-home utility (ssh to george from anywhere) 
+**** TODO use this in i3 config for mod ctrl return
+*** TODO create mount-shared-drives utility
+**** TODO add =--remote= option to use george_remote
+**** TODO add =--auto= option to automatically determine whether to use remote or local
+This should probably check every so often to detect the transition from remote to local, as remote will still work from local
+**** TODO add =--unmount= and =--remount= options 
+=--remount= should just unmount before mounting
+**** TODO create a systemd service to do this automatically
+This should have a way of detecting errors, and knowing when to switch to remote and back to handle laptop otg
+*** TODO add an option in dmenu-custom/xrandr to turn off all displays
+*** TODO leroy: install arch
+
 
 
 * Algorithms

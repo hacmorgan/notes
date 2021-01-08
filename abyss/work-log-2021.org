@@ -1,4 +1,4 @@
-* Longer term TODOs
+* TODO Longer term TODOs
 ** TODO [#A] fix bruno .tmux.conf (or whatever is causing autosuggestions to not work)
 ** TODO [#B] lantern-photogrammetry: autoset seqview to Camera On Demand
 ** TODO [#B] lantern-photogrammetry: remove need for --force when using --dry-run
@@ -32,4 +32,18 @@ There should be some processed data on Pond, start there.
 - got up to labelling, will talk to asif tomorrow
 *** TODO set up local seqview instance
 - add prefs folder in root directory of seqview
-  
+** <2021-01-07 Thu> - ADK005 testing
+*** DONE fix directory structure
+*** DONE generate seqview data for mooring line 1
+** <2021-01-07 Thu> - ADK005 testing; investigate thing for Fraser
+*** TODO create or update masking SOP
+*** TODO investigate thing for Fraser
+*** TODO mask revolutions separately in V7
+- Lots of bash loops! I should save these commands I'm using...
+- While it's a bit tedious keeping everything in order, it should be easy enough to separate the work out.
+- Definitely a big job uploading data to V7 like this
+  - It would be nice if uploads from command line preserved folders
+**** TODO rename to adk005.mooring-line-1, as we will put all the links in this project
+*** TODO generate imagery with darktable filter
+*** DONE investigate reconstruction without masks
+Not good :(
