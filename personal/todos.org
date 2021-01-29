@@ -1,1 +1,49 @@
 Short-term (sub-project) TODOs, grouped by area
+
+* DONE install comma, snark and bedrock on george
+* DONE [#A] em upgrade
+** DONE add =--terminal,-t= (replacing tem)
+** DONE add =--george,-g=
+** DONE add =--buffalo,-b=
+** DONE hook these into dmenu-custom
+* DONE [#A] create where-is-george utility 
+should either print =george= or =george_remote=
+** DONE use this in i3 config for mod ctrl return
+* DONE [#C] create mount-shared-drives utility
+** DONE add =--remote= option to use george_remote
+** DONE add =--auto= option to automatically determine whether to use remote or local
+This should probably check every so often to detect the transition from remote to local, as remote will still work from local
+** DONE add =--unmount= and =--remount= options 
+=--remount= should just unmount before mounting
+** DONE create a systemd service to do this automatically
+This should have a way of detecting errors, and knowing when to switch to remote and back to handle laptop otg
+* DONE leroy: install arch
+* DONE sysbs: new features
+** DONE add =--dots=
+** DONE add =--scripts=
+** DONE add =--link-systemd-services=
+* DONE [#B] add systemd services
+** DONE barrier xinit (client and server)
+** DONE mount-shared-drives
+** DONE mount-abyss-drives (needs to be created)
+** DONE wireguard (george only)
+* TODO order stuff off eBay
+** TODO 2m HDMI cable
+** TODO switch dock and power supply
+** TODO decent 3.5mm audio cables
+** TODO surface PSU
+* TODO determine whether 1TB drives will last or whether bigger drives necessary
+* TODO setup zfs and storage
+* DONE add an option in dmenu-custom/xrandr to turn off all displays
+* DONE test out kitty, migrate to it as default if it's good (just watch DT video)
+* TODO install comma, snark and bedrock on enzo
+* TODO rename surface-control-panel to something better and get it running on george
+* DONE systemd sshfs things
+* DONE sysbs: add --enable-systemd-services
+* DONE hq .gitignore: all of GIMP stuff
+* TODO reply to Seva
+** DONE pull snark and check the new csv-plot (enable in cmake first)
+* DONE get remotes mountign working
+** DONE Try uncommenting =user_allow_other= in /etc/fuse 
+This worked! Now see if a service running mount-shared-drives will work!
+** try running mount-shared-drives

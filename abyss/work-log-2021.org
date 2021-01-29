@@ -1,21 +1,18 @@
 * TODO Longer term TODOs
-** TODO [#A] fix bruno .tmux.conf (or whatever is causing autosuggestions to not work)
+** TODO [#A] compare jordan's ML2 a-link model to the new one
+** TODO [#B] fix bruno .tmux.conf (or whatever is causing autosuggestions to not work)
 ** TODO [#B] lantern-photogrammetry: autoset seqview to Camera On Demand
-** TODO [#B] lantern-photogrammetry: remove need for --force when using --dry-run
-** TODO [#B] lantern-photogrammetry: fix ls errors (cannot find \*.psx)
-** DONE [#B] lantern-photogrammetry: update for 1.6.5 API (alternatively make metashape-cli)
-** DONE [#B] lantern-photogrammetry: parallelize video generation
-
+** DONE [#B] lantern-photogrammetry: remove need for --force when using --dry-run
 ** TODO [#B] metashape-cli: predefined expressions
 *** DONE change --print-predefined-expressions to --pretty-print-expressions
 *** DONE add --print-expressions,-p to print expressions as they are defined
 *** TODO investigate predefined expressions with values
 ** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
-** TODO [#C] =mount-shared-drives= : allow specification of drives to mount
-
-
-   
+** TODO [#B] metashape-cli: if re-aligning an existing project, disable all scalebars
+** TODO [#B] metashape-cli: write command (incl. substituted expression) to a file
+** TODO [#B] metashape-cli: die if no expression given
 * Week starting <2020-12-21 Mon>
+** <2021-01-04 Mon> - LEAVE
 ** <2021-01-05 Tue> - fix lantern-photogrammetry; review video-gen; ADK005 processing
 *** TODO branch bedrock and integrate metashape-cli for 1.6.5 compatibility
 *** DONE email zdzislaw to tee up a time for review
@@ -35,7 +32,7 @@ There should be some processed data on Pond, start there.
 ** <2021-01-07 Thu> - ADK005 testing
 *** DONE fix directory structure
 *** DONE generate seqview data for mooring line 1
-** <2021-01-07 Thu> - ADK005 testing; investigate thing for Fraser
+** <2021-01-08 Fri> - ADK005 testing; investigate thing for Fraser
 *** TODO create or update masking SOP
 *** TODO investigate thing for Fraser
 *** TODO mask revolutions separately in V7
@@ -47,3 +44,124 @@ There should be some processed data on Pond, start there.
 *** TODO generate imagery with darktable filter
 *** DONE investigate reconstruction without masks
 Not good :(
+
+* Week starting <2021-01-11 Mon>
+** <2021-01-11 Mon> - ADK005 meeting & masking
+*** ADK005 deliverables meeting
+- We have previous data from the client:
+  - caliper measurements
+  - previous photogrammetry work
+- We want to be able to merge this previous data with our data
+*** ADK005 masking
+*** TODO run 1st model /without/ colour correction
+*** TODO run 1st model /with/ colour correction
+*** TODO investigate thing for Fraser
+*** TODO modify lea-preprocess aggregate-logs (or create new function) to merge revolutions
+** <2021-01-12 Tue> - ADK005 testing
+*** DONE fix metashape-cli masking
+*** DONE investigate adding darktable functionality to metashape-cli
+For now, it is probably worth keeping this out. It is still handled in =lantern-photogrammetry=, and there are many other things that could be automated if we continue working like this.
+*** DONE clean up ADK005 datasets
+*** DONE investigate thing for Fraser
+*** TODO run batch processing experiments
+** <2021-01-13 Wed> - ADK005 testing
+*** TODO metashape-cli: --chunk-num -> --chunk-id
+** <2021-01-14 Thu> - ADK005 data upload, testing
+*** DONE remove the /redo/ datasets
+*** DONE split ml2-pos-19 into two datasets
+*** DONE make colour corrected versions of all the images from ml1 and ml2
+** <2021-01-15 Fri> - ADK005 testing
+*** DONE process pos-2 separately
+*** DONE downsample all images
+* Week starting <2021-01-18 Mon>
+** <2021-01-18 Mon> - ADK005 workflow development; OCN001 image selection
+*** TODO check all of the ML1 imagery for overexposure, correct it all
+Maybe check with Thomas
+*** TODO process some of the OCN001 data again
+*** TODO review line-1 masks
+**** folders with images that ened re-annotating
+- pos-23/camera-1
+- pos-22/camera-1
+- pos-21/camera-1
+*** TODO clean up line 1 processed revolutions' directory structures
+** <2021-01-19 Tue> - ADK005 single link testing; OCN001 selection
+*** DONE see what was wrong with bash command
+*** DONE move files to correct place
+*** DONE symlink all corrected images
+*** DONE run metashape
+*** DONE [#A] check downscaled alignment model
+*** DONE [#B] clean jordan's model
+*** DONE [#C] export a texture
+*** DONE queue up some other processing experiments
+*** DONE maybe investigate the camera alignment improving stuff from old lantern-photogrammetry
+*** DONE try with different limits for tiepoints
+** <2021-01-20 Wed> - ADK005 STILL NOT WORKING FFS (jk it is)
+*** TODO rerun jordan's dataset with 1.6.5 (incl. darktable)
+*** TODO take the return trip out (only half the revolutions)
+*** TODO try other links
+*** DONE send bp004 email & Jordan's model to all concerned
+*** TODO see if checked scalebars have any impact with reference_preselection=False 
+*** TODO check when scalebars are turned on in the pipeline
+*** TODO re-upscale the masks for link 1 (SCRIPT IT)
+*** DONE change all masks and images directories to read only (SCRIPT IT) 
+*** TODO fix bad alignment accuracy
+**** TODO try setting generic preselction to False
+**** TODO try masking out the corners of the images (SCRIPT IT)
+didn't script it, just did a find masks (etc)
+*** TODO fix metashape-cli:
+**** TODO default expressions
+**** TODO turn off scalebars before alignment
+** <2021-01-21 Thu> - ADK005 accuracy fixing
+*** DONE set up batch processing script
+*** DONE start batch processing
+*** DONE check if images matched by scalebars are actually pairs
+Yes, but some of their timestamps are off slightly.
+Even if the pipeline blindly matches images, it should still work. All the images are good matches
+*** TODO investigate how the processing tools make scalebars
+*** TODO review ml2 V7 stuff
+*** TODO add to the ADK005 data processing page
+*** DONE (SCRIPT) remove all "images" folders
+if images folder exists and images-uncorrected exists and images-corrected exists AND they all have the same number of images, delete images folder. Otherwise throw error
+*** DONE regenerate ml4 data 
+*** DONE generate comparison videos for all revolutions -> seqview 
+- burn timestamp into image
+- get help reviewing 
+**** DONE make merged video work in seqview
+check what's different between lantern-photogrammetry and platypus-explorer-calc
+*** TODO maybe try a different /redo/ if there is a problem on that rev
+- this could be caused by hanging in the GUI?
+*** TODO bring lash up to speed
+** <2021-01-22 Fri> - ADK005 comparison videos, ML2 review
+*** DONE remove .local/bin bedrock utils
+*** TODO fix how-to lantern-photogrammetry
+*** DONE check all the comparison videos
+*** TODO add to the ADK005 data processing page
+*** TODO talk to Thomas about how to delegate some of this work
+* Week starting <2021-01-25 Mon>
+** <2021-01-25 Mon> - ADK005 masking review
+*** TODO check other ML2 links
+**** c-link: almost good, just a few misalignments
+**** d-link: much the same
+**** e-link: same again
+*** TODO clean ML2 b-link
+*** TODO review ML2 masks
+*** TODO fix out-of-sync imagery
+*** DONE fix ml2-pos-11 incorrect image
+*** TODO maybe just check to make sure the ppms really are faulty
+** <2021-01-26 Tue> - downloading V7 masks
+wait for pos-21
+** <2021-01-27 Wed> - ADK005 timestamp fixing
+*** DONE make a csv for revolutions that need fixing
+*** DONE make new directories in processed
+*** DONE put the csv for correct image alignment in those directories
+*** DONE re-annotate the seqview videos to only take one half of the revolution
+*** DONE use seqview video + alignment csv to make a new images-uncorrected directory
+- this should be scripted, and needs to drop lines without two comma-separated names
+  - see if comma can handle this
+
+*** DONE generate new comparison videos
+*** DONE generate textured model for b-link
+** <2021-01-28 Thu> - ADK005 V7 upload, monitoring cleaning of dense clouds
+*** DONE ML1 shifted datasets: regen images-all
+*** DONE check dense clouds for alignment issues
+*** next time don't use V7 folders, just change file names to something recoverable

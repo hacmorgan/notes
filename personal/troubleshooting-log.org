@@ -61,7 +61,6 @@ Once on the systemd page (after forking from the main handbook), after merging t
     emerge --ask --verbose --update --deep --changed-use @world
     #+end_src
   
-
 * Comma & snark
 ** csv-eval =no module named comma=
 pomma was not on $PYTHONPATH, but that env variable is not set by default, and setting it doesn't help on Gentoo. This command will show where python looks for modules
@@ -92,3 +91,7 @@ cd /path/to/boost_1_71_0
 sudo ./bootstrap.sh
 sudo ./b2 install --ignore-site-config
 #+end_src
+
+* Barrier
+** mouse resets to centre of server machine instead of moving to client machine
+starting the barrier client in a terminal with X11 forwarding causes this problem
