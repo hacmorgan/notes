@@ -3,8 +3,8 @@ This is the canonical reference point for *all* projects, past, present and futu
 If the project is big enough that it has its own /notes/ file, this should just be a link to that file.
 
 * System Administration & Utilities
-** TODO name-value-args
-** TODO proper locationing of configs & cmake install for utilities
+** DONE name-value-args
+** DONE proper locationing of configs & cmake install for utilities
 This does hinge to a certain extent on the potential for different platforms to share a single master copy of a config, and differ by branching. If symlinks are to be broken, and utilities on PATH are to be moved, this should all happen at once.
 
 With that said, there is also a chance git branches won't work perfectly for this, as they /seem/ to be slightly more specialised for maintaining a code base. For this reason, the git branching thing should be the first thing investigated here.
@@ -14,32 +14,29 @@ This has been working great, currently leaving the master branch as the desktop 
 
 *** TODO Copy cmake stuff from Bedrock in order to install utilities
     
-** TODO migration to Gentoo
+** DONE migration to Gentoo
 *** TODO install hantek software
 - pulseview
 - driver is mentioned somewhere in Pocket
 *** TODO notify-send
-*** DONE can CUDA be installed if we allow EULA?
+*** TODO can CUDA be installed if we allow EULA?
 No, it is maked for other reasons
 *** TODO install comma & snark
 *** TODO Wacom support
-** TODO transition to hq repo
+** DONE transition to hq repo
 *** DONE copy master configs from useful-scripts, ensure they are generic
 *** DONE create named branches (per new hostnames) with their specific code
 diff the useful-scripts verison
-*** TODO add a deprecation notice to useful-scripts
+*** DONE add a deprecation notice to useful-scripts
 
 *** DONE add a list of installed packages 
 
-*** TODO add a list of tracked git repos
+*** DONE add a list of tracked git repos
 *** use cmake to install scripts (and configs if possible)
-
-
 
 * Non-technical
 ** Resume
 Write in ORG mode, translate to LaTeX and HTML
-
 
 * Programming Languages
 ** Rust
@@ -52,15 +49,13 @@ Try to boot from a USB. It should handle a PS/2 keyboard (yay!). This is not lik
 For now, this may be true. Maybe cover the kernel and pwnable first?
 *** TODO Contribute to ROSrust
 
-
 ** Assembler
 *** TODO x86 Assembler tutorial (YouTube)
-
 
 ** C++
 *** TODO work on match-images functionality
 First in Python, then translate to c++
-
+*** TODO Cppweekly
 
 * Operating systems
 ** Linux
@@ -80,7 +75,9 @@ making sense of the more contemporary documentation
 *** TODO try booting from USB
 *** TODO determine which aspects can be worked on
 
-
+* Web dev
+** Frontend course on youtube (playlist is saved)
+** Backend course on youtube (playlist is saved)
 * Building Stuff
 ** TODO [[~/src/projects/pelicomputer/plan.org][Pelicomp v1.0]]
 ** FreeCAD
@@ -107,18 +104,12 @@ making sense of the more contemporary documentation
 | [[https://www.scorptec.com.au/product/power-supplies/atx/85521-sst-da850-g][SilverStone 850W Power Supply]] |        1 | $199 | - Silent fan                                                   |
 |                               |          |      | - Modular cables                                               |
 |-------------------------------+----------+------+----------------------------------------------------------------|
-
 * Algorithms
 ** TODO MIT algorithms course
-
-
+** TODO do photogrammetry from scratch in C++ with opencv
 * Software Design
-  
-
 * Security
 ** TODO pwnable.kr
-
-   
 * Embedded
 ** Contemporary
 *** RTEMS Quick Start Guide
@@ -134,27 +125,27 @@ Order components
   - a microprocessor (e.g. 6502), using assembly
   - from scratch like the 8-bit computer.
 - Probably need to watch a few more videos before doing this
-
-
 * Other people's projects
 ** Tour Calculator
-
 ** Karen blockchain
-The idea here is that: 
+*** The idea here is that: 
 - suppliers can make listings (like a marketplace) 
 - customers can also make purchases which will be captured in the blockchain
 - alternatively, the supplier and customer can place one-off contracts in the blockchain
   - might be best if all listings contain a target field to avoid people being sniped
-    - e.g. =target: any= for open listings, and =target: cba= for a specific contractsa
+    - e.g. =target: any= for open listings, and =target: cba= for a specific contracts
 - part of the security then involves a sort of escrow 
   - if payments must be made in conventional currencies, this has to be external, and may have other dependencies
-
-
+*** Reading material
+**** [[https://eprint.iacr.org/2017/375.pdf][Do you need a blockchain?]]
+**** [[https://www.hyperledger.org/use/fabric][Hyperledger Fabric homepage]] and [[https://hyperledger-fabric.readthedocs.io/en/latest/whatis.html#introduction][its documentation]] (good documentation, though there is a lot of it)
+(open source framework for permissioned blockchains)
+**** Some existing products (found from Do you need a blockchain?):
+- https://www.skuchain.com/
+- https://www.everledger.io/
 
 * Completed
 ** C
 *** DONE Work through CK&R
-
-
 * Abandoned
 None, yet.

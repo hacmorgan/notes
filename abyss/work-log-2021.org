@@ -1,16 +1,16 @@
 * TODO Longer term TODOs
-** TODO [#A] compare jordan's ML2 a-link model to the new one
-** TODO [#B] fix bruno .tmux.conf (or whatever is causing autosuggestions to not work)
-** TODO [#B] lantern-photogrammetry: autoset seqview to Camera On Demand
-** DONE [#B] lantern-photogrammetry: remove need for --force when using --dry-run
+** TODO [#A] metashape-cli-backend: die if metashape version too old
+** TODO [#A] how-to lantern-photogrammetry: implement Thomas' changes
 ** TODO [#B] metashape-cli: predefined expressions
 *** DONE change --print-predefined-expressions to --pretty-print-expressions
 *** DONE add --print-expressions,-p to print expressions as they are defined
 *** TODO investigate predefined expressions with values
-** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
-** TODO [#B] metashape-cli: if re-aligning an existing project, disable all scalebars
+** TODO [#B] metashape-cli: add examples
 ** TODO [#B] metashape-cli: write command (incl. substituted expression) to a file
 ** TODO [#B] metashape-cli: die if no expression given
+** TODO [#C] lantern-photogrammetry: autoset seqview to Camera On Demand
+** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
+** TODO [#C] fix bruno .tmux.conf (or whatever is causing autosuggestions to not work)
 * Week starting <2020-12-21 Mon>
 ** <2021-01-04 Mon> - LEAVE
 ** <2021-01-05 Tue> - fix lantern-photogrammetry; review video-gen; ADK005 processing
@@ -165,3 +165,134 @@ wait for pos-21
 *** DONE ML1 shifted datasets: regen images-all
 *** DONE check dense clouds for alignment issues
 *** next time don't use V7 folders, just change file names to something recoverable
+** <2021-01-29 Fri> - ADK005 masking reviewing, fix metashape-cli bug
+*** DONE update data-processing-notes.md
+**** non-downsampled aligned datasets
+*** DONE fix metashape-cli bug
+*** DONE email seva with bug
+*** DONE check whether all downloaded masks are pngs
+*** DONE ml4: make directories and revolutions.txt for each link
+*** DONE symlink ml4 images & masks
+*** DONE download ml1 a-link masks
+*** DONE symlink ml1 a-link images
+* Week starting <2021-02-01 Mon>
+** <2021-02-01 Mon> - ML5 mask review, PSC bug fix
+*** DONE Fix bugs in platypus-scout-calc
+*** DONE Review ML5 masks
+**** REMEMEBER TO MOVE RELEVANT IMAGES FROM pos-15/camera-0 TO pos-14/cammera-1!!!
+Also confirm first whether this is correct
+*** TODO run processing overnight
+check whether ml2-a-link ran, as it was read-only, probably still open on buffalo
+** <2021-02-02 Tue> - Polyworks
+*** TODO none of the ML5 models had all the images symlinked 
+*** DONE fix detect-checkerboard
+*** TODO update story points on model generation
+** <2021-02-03 Wed> - Perpendicular polyworks 
+*** DONE make cross-sections perpendicular in Polyworks
+*** TODO update story points on model generation
+*** TODO check stuff that ran overnight
+**** TODO check ml5 accuracies
+**** TODO check scalebars as appropriate in all models and reset transform
+**** TODO rerun all model generation
+**** TODO check that scalebars remain 
+*** DONE regenerate comparison videos
+** <2021-02-04 Thu> - Polyworks measurements
+*** DONE take all measurements for models with valid models
+*** DONE compare measurements to caliper measurements
+** <2021-02-05 Fri> - Fix ML5 B-link, more polyworks, polyowrks documentation, area of cross-sections
+*** DONE fix out-of-sync images on the B-link
+Jordan says dw
+*** DONE run polyworks measurment workflow on remaining ML4 models, extract measurements, update sheet
+*** TODO document the polyworks measurement workflow
+*** TODO write a script to calc area of a cross-section
+* Week starting <2021-02-08 Mon>
+** <2021-02-08 Mon> - Final Polyworks
+*** DONE Run polyworks workflow on ML5 models
+*** DONE clean ML5 a-link textured model noise
+*** TODO document the polyworks measurement workflow
+*** TODO write a script to calc area of a cross-section
+*** DONE polyworks revisions
+**** DONE red arrow heads
+**** DONE remove bottom bit (organization etc) as well as date and pg number
+**** DONE export pages as high-res images
+**** DONE remove underscores in names
+**** DONE concatenate CSVs
+** <2021-02-09 Tue> - PI
+** <2021-02-10 Wed> - PI
+** <2021-02-11 Thu> - ADK005 Extras
+*** TODO ADK005 Extra Bits
+**** TODO calculate change in measurements when rotating the cross-section +/- 5 degrees
+**** TODO calculate change in measurements when rotating measurements +/- 5 degrees about the normal to the cross-section plane
+**** TODO calculate area of all cross-sections for a single link, calculate ellipse area based on in & out of plane, compare
+** <2021-02-12 Fri> - ADK005 wrap-up, 
+*** TODO Polyworks workflow -> Confluence
+*** DONE Metashape calibration/validation discussion -> Confluence
+*** DONE verify that cross-section areas make sense visually (csv-plot!)
+*** DONE re-export all points in case the cross-section picks up noise
+* Week starting <2021-02-15 Mon>
+** <2021-03-15 Mon> - Terrapin software dev practices, some polyworks documentation
+*** TODO establish best practices for robotics team
+** <2021-03-16 Tue> - Establish software best practices
+Write documentation, etc
+** <2021-02-17 Wed> - ROS-independent data format
+*** DONE send email re: =lantern-photogrammetry=
+*** TODO merge polyworks confluence pages
+*** TODO get some example ROS bags
+*** TODO test the relative efficiencies of binary and zstd compressed YAML
+- with images stored this way too
+**** TODO write a utility to convert our PPMs to text based for this comparison 
+csv-{to,from}-bin are little-endian, but PPMs are big-endian :/
+  
+
+*** TODO review results with Zdzislaw
+** <2021-02-18 Thu> - ROS-independent data format
+*** DONE add email contents to confluence (lantern-photogrammetry)
+*** DONE make a simple binary data structure to compare size
+** <2021-02-19 Fri> - ROS-independent data format, helping Lash
+*** TODO write C++ util to extract from bagfile to YAML
+*** DONE nail down data format
+big data (pointclouds, images, etc) stored externally, everything else: ROS bag -> yaml
+*** TODO determine whether this package needs to be in our catkin workspace
+*** TODO work out if it's a problem that ros-bag-to-bin is only compatible with melodic
+* Week starting <2021-02-22 Mon>
+** <2021-02-22 Mon> - ROS-independent data format
+*** DONE Discuss ROS with Lash
+If abyss-ros doesn't have to be built in order for the Python ROS API to work correctly, does that make a ROS bag an acceptable file format, at least for now? There are some reasons to stick with rosbags, e.g. to play them back in real time, etc.
+
+We can use one or multiple external utilities (such as =ros-bag-to-bin=) that use the Python API to extract the data we need from the bags as necessary, which avoids the need for every utility along the way to parse YAMLs or bagfiles. Also, if we *do* go down this road of using YAMLs, we will be able to mimic =ros-bag-to-bin='s behaviour, just with YAMLs as input.
+
+One important point from this is that in many cases, moving these utilities to parse a different format down the line would likely actually be quite simple.
+
+Otherwise
+
+*** DONE brush up =ros-to-csv= and maybe =ros-bag-to-bin=, to see how viable they are
+get these utils working correctly, try to extract data from bagfiles of various ages
+
+They are python2 utilities, and probably a little overfit for what we're doing. With some work we could get them working, but probably not worthwhile
+
+*** DONE merge polyworks docs
+** <2021-02-23 Tue> - ROS-independent data format cont'd
+*** DONE decide on the format: *YAML*
+*** TODO write yamlToCsv
+The question here is speed. Will using the YAML library just spend ages loading and unloading memory?
+If it does, we can maybe deal with just simple text parsing
+
+*problem:* there exists no YAML parser that doesn't read the WHOLE file in order to do anything. Writing a parser is not difficult, but it is time-consuming
+*** DONE merge master
+** <2021-02-24 Wed> - YAML -> CSV 
+*** TODO Write YAML to CSV 
+** <2021-02-25 Thu> - YAML -> CSV
+** <2021-02-26 Fri> - YAML -> CSV
+* Week starting <2021-03-01 Mon>
+** <2021-03-01 Mon> - YAML -> CSV
+Reviewed Zdzislaw's changes over the weekend, now have a backlog of todos
+*** DONE handle stdin
+*** DONE write documentation
+*** DONE clean up code structure and help function
+*** TODO add more usage examples
+*** TODO handle compression
+*** TODO optimise construction of CSV data (is it any faster to print value-by-value?)
+*** TODO export as binary
+*** TODO use cmake instead
+*** TODO write tests
+
