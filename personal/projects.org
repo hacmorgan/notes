@@ -34,6 +34,8 @@ diff the useful-scripts verison
 *** DONE add a list of tracked git repos
 *** use cmake to install scripts (and configs if possible)
 
+* Editors & Other Tools
+** TODO Find/write automatic Doxygen thing for emacs
 * Non-technical
 ** Resume
 Write in ORG mode, translate to LaTeX and HTML
@@ -56,7 +58,7 @@ For now, this may be true. Maybe cover the kernel and pwnable first?
 *** TODO work on match-images functionality
 First in Python, then translate to c++
 *** TODO Cppweekly
-
+*** TODO learn gdb
 * Operating systems
 ** Linux
 *** DONE Linux From Scratch

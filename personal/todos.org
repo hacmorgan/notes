@@ -1,6 +1,14 @@
 Short-term (sub-project) TODOs, grouped by area
 
 * TODO determine whether 1TB drives will last or whether bigger drives necessary
+* TODO Arduino motor control for speakers
+** TODO test motor control (including strength)
+** TODO test 
+* TODO learn elisp (up to [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Editing-Types.html#Editing-Types][Editing Types]])
+** TODO implement a shortcut (or different keybinding) for commenting in terminal
+** TODO implement changing line numbers
+* TODO set up snapshots on all machines (timeshift)
+* TODO Install enzo's new ram and HDD
 * TODO setup zfs and storage
 * TODO rename surface-control-panel to something better and get it running on george
 * TODO =sysbs=: new features
@@ -25,7 +33,23 @@ This should probably check every so often to detect the transition from remote t
 =--remount= should just unmount before mounting
 ** DONE create a systemd service to do this automatically
 This should have a way of detecting errors, and knowing when to switch to remote and back to handle laptop otg
-* TODO Install ligatures font
+* TODO finish 8-bit cpu
+** TODO build
+** TODO docs
+* TODO make mum's present
+* TODO make Emily's card
+* TODO Karen blockchain
+* TODO Contemporary
+* TODO csv-plot
+* DONE purchases
+** DONE otoflush
+** DONE 4tb HDD
+** DONE 16gb more RAM
+** DONE mum bday present
+** TODO ? another SSD for George
+* DONE emacs: improve irony-mode
+** does it only look in stadard include locations?
+** can you change where it looks in customize?
 * DONE hq: add dependencies
 * DONE install comma, snark and bedrock on enzo
 * DONE dmenu-custom: add mount-shared-drives option

@@ -32,6 +32,26 @@ You can also set this in the confog file like so (just a random example):
  #+begin_src emacs-lisp
 (c-set-offset 'substatement-open 0)
  #+end_src
+** elisp
+*** example: print elements of a list
+#+begin_src emacs-lisp
+(setq animals '(gazelle giraffe lion tiger))
+
+(defun print-elements-of-list (list)
+  "Print each element of LIST on a line of its own"
+  (while list
+    (print (car list))
+    (setq list (cdr list))))
+
+(print-elements-of-list animals)
+#+end_src
+
+To see this in action, paste the code in emacs' scratch buffer, move the cursor below the code (*that's important*) and run =M-x eval-print-last-sexp= (or C-j)
+*** basic types
+**** get integer representation of character (in this case, Q)
+#+begin_src emacs-lisp
+?Q
+#+end_src
 * find ips and hostnames on network
 /courtesy of Tek/
 ** Find IPs on LAN:
@@ -52,6 +72,18 @@ Now that we have a list of IPs (lets say we redirected the output of the above c
 #+begin_src bash
 cat ips | while read s; do avahi-resolve-address $s; done
 #+end_src
+* GDB
+** The basics
+*** Compile program with support for GDB
+add =-g= to compile command
+*** Basic Commands
+- run =gdb <executable>=
+- =break main= will set a breakpoint at main function. The same can be done for other functions, or lines, e.g. =break main.cpp:14=
+- =run= will run the program
+- =next= will step to the next line
+- =backtrace= will show the call stack (I think), useful for debugging segfaults etc
+
+
 * comma & snark
 ** installing on Arch Linux
 *** pthreads issues

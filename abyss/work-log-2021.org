@@ -1,4 +1,13 @@
 * TODO Longer term TODOs
+** TODO [#A] GHD006 Canal Bathymetry
+*** TODO Review footage
+*** TODO Downstream (start here, client wants this first): 
+**** centre-run-01
+*** TODO Upstream: 
+**** east-run-02
+**** west-run-03
+** TODO [#A] ADK005 data demob
+** TODO [#A] Write demob confluence page (JJ review)
 ** TODO [#A] metashape-cli-backend: die if metashape version too old
 ** TODO [#A] how-to lantern-photogrammetry: implement Thomas' changes
 ** TODO [#B] metashape-cli: predefined expressions
@@ -295,4 +304,79 @@ Reviewed Zdzislaw's changes over the weekend, now have a backlog of todos
 *** TODO export as binary
 *** TODO use cmake instead
 *** TODO write tests
-
+** <2021-03-02 Tue> - Git migration, YAML -> CSV documentation
+** <2021-03-03 Wed> - Git migration completion, YAML -> CSV documentation
+*** *Performance when loading everything into memory*: 15m 58s to perform the below command
+#+begin_src bash
+./yaml-to-csv < ~/scratch/ros-independent-data-format/processed-data/platypus.points.yaml > /dev/null
+#+end_src
+*** *Performance when not loading scalars in sequences:* 12m
+** <2021-03-04 Thu> - YAML -> CSV efficiency improvement
+*** Testing efficiencies
+- The following tests were performed on the file: /~/scratch/ros-independent-data-format/processed-data/platypus.points.yaml/
+- stdout was redirected to //dev/null/ in all cases
+|-----------------+---------------+--------------+---------|
+| *sync_with_stdio* | *cout/cin tied* | *input stream* | *time*    |
+|-----------------+---------------+--------------+---------|
+| false           | false         | stdin        | 12m     |
+| false           | false         | file         | 11m 26s |
+| true            | false         | stdin        | 11m 6s  |
+| true            | false         | file         | 11m 20s |
+| false           | true          | stdin        |         |
+| false           | true          | file         |         |
+| true            | true          | stdin        |         |
+| true            | true          | file         | 11m 16s |
+|-----------------+---------------+--------------+---------|
+** <2021-03-05 Fri> - YAML -> CSV
+* Week starting <2021-03-08 Mon>
+** <2021-03-08 Mon> - YAML -> CSV
+*** DONE YAML -> CSV: handle scalars
+*** DONE deactivate metashape
+*** Testing efficiencies again
+- This time, we are using file /~/scratch/ros-independent-data-format/processed-data/platypus.yaml/
+  - It is 3.5G, where platypus.points.yaml is 2.2G. Scaling for this, the parsing time is on-par with what it was last time
+- Still redirecting output to //dev/null/
+|-------------+----------------+----------------|
+| *yaml-to-csv* | *ros-bag-to-csv* | *ros-bag-to-bin* |
+|-------------+----------------+----------------|
+| 18m 20s     |                |                |
+| 18m 02s     |                |                |
+|             |                |                |
+** <2021-03-09 Tue> - YAML -> CSV tidying up before review
+*** TODO activate metashape on buffalo
+*** TODO 
+** <2021-03-10 Wed> - Sprint demo, installing stuff on buffalo, unit tests
+** <2021-03-11 Thu> - Unit test debugging, V7 AI test, 
+*** TODO fix segfaulting in unit testing
+*** TODO test this new V7 feature
+*** TODO change calibration page to say abyss-robotics
+** <2021-03-12 Fri> - Same as above
+* Week starting <2021-03-15 Mon>
+** <2021-03-15 Mon> - Metashape spool piece test, fix private/public unit tests, V7 AI test complete
+** <2021-03-16 Tue> - Finish writing unit tests
+** <2021-03-17 Wed> - Platypus data validation: multiprocessing framework
+** <2021-03-18 Thu> - ribf-to-csv: fix bugs and implement ZSL's changes; platypus data validation: image numbers in bags
+*** DONE reset to before merging master
+reset and push both need --force
+*** TODO add Color to namespace Abyss
+*** TODO add const and & to color functions
+*** TODO constexp: read up on
+** <2021-03-19 Fri> - email ras about bamboo
+* Week starting <2021-03-22 Mon>
+** <2021-03-22 Mon> - Implement Zdzislaw's feedback on ribf-to-csv
+** <2021-03-23 Tue> - Platypus data validation
+*** DONE Determine best format -> YAML
+*** DONE Ensure program runs with yaml as config (instead of json)
+* Week starting <2021-03-29 Mon>
+** <2021-03-31 Wed> Meeting with Bentley re: ContextCapture
+*** Bentley Meeting
+- ContextCapture is similar to Metashape in functionality
+- ContextCapture was an acquisition
+  - Their main deal is software for big industries
+- ContextCapture is supposedly *higher accuracy* and fidelity than Metashape
+- Engine written for linux (driven by people using AWS)
+  - Python SDK (runs on Linux)
+  - No equivalent frontend yet (would need to use Windows)
+- Pointclouds can be exported for cleaning before being re-imported for later stages
+- Get back to Glen re: what kind of dataset we would test with
+**** Questions
