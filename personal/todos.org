@@ -1,31 +1,33 @@
 Short-term (sub-project) TODOs, grouped by area
 
-* TODO determine whether 1TB drives will last or whether bigger drives necessary
-* TODO Arduino motor control for speakers
-** TODO test motor control (including strength)
-** TODO test 
-* TODO learn elisp (up to [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Editing-Types.html#Editing-Types][Editing Types]])
+* TODO bravio!!!
+* TODO make notify-send messages go away after a few seconds
+* TODO setup zfs and storage
+* TODO order a new headband for headphones
+* TODO new wallpapers 
+* TODO set up snapshots on all machines (timeshift)
+* TODO george OS upgrade
+* TODO learn elisp
 ** TODO implement a shortcut (or different keybinding) for commenting in terminal
 ** TODO implement changing line numbers
-* TODO set up snapshots on all machines (timeshift)
-* TODO Install enzo's new ram and HDD
-* TODO setup zfs and storage
+* TODO Arduino motor control for speakers
+** TODO test motor control (including strength)
+* TODO Disassemble toothbrush
 * TODO rename surface-control-panel to something better and get it running on george
-* TODO =sysbs=: new features
-** TODO define a better structure for packagelist
-should include:
-- the package manager name
-- the command to list all installed packages
-- the ability to comment out packages you don't want to install
-** TODO add =--install-packages=
-** TODO add =--update-package-list=
-looks for packages already in the list (they may be commented out) and only adds new ones, prints the new ones to stderr
-** DONE add =--dots=
-** DONE add =--scripts=
-** DONE add =--link-systemd-services=
-* TODO =mount-shared-drives=
-** TODO add =--verbose=
-** TODO implement notify-send
+* TODO Brightness control on bisous
+* TODO finish 8-bit cpu
+** DONE base build
+** TODO bootloader
+** TODO documentation
+* TODO new YouTube music script
+* TODO organise resistors
+* TODO Karen blockchain
+* TODO Contemporary
+* TODO csv-plot
+* DONE put switch on LED lamp
+* DONE =mount-shared-drives=
+** DONE add =--verbose=
+** DONE implement notify-send
 ** DONE add =--remote= option to use george_remote
 ** DONE add =--auto= option to automatically determine whether to use remote or local
 This should probably check every so often to detect the transition from remote to local, as remote will still work from local
@@ -33,14 +35,27 @@ This should probably check every so often to detect the transition from remote t
 =--remount= should just unmount before mounting
 ** DONE create a systemd service to do this automatically
 This should have a way of detecting errors, and knowing when to switch to remote and back to handle laptop otg
-* TODO finish 8-bit cpu
-** TODO build
-** TODO docs
-* TODO make mum's present
-* TODO make Emily's card
-* TODO Karen blockchain
-* TODO Contemporary
-* TODO csv-plot
+* DONE wrap presents
+* DONE =sysbs=: new features
+** DONE update-git-repos: add a config file to hq/etc that dictates repos that don't need commit messages
+** DONE define a better structure for packagelist
+should include:
+- the package manager name
+- the command to list all installed packages
+- the ability to comment out packages you don't want to install
+** DONE add =--install-packages=
+** DONE add =--update-package-list=
+looks for packages already in the list (they may be commented out) and only adds new ones, prints the new ones to stderr
+** DONE bash-std: die if invalid option encountered
+** DONE add =--dots=
+** DONE add =--scripts=
+** DONE add =--link-systemd-services=
+* DONE see if the same VM can be run from multiple virtualbox instances
+* DONE hook =sdc= into dmenu-custom 
+* DONE make Emily's card
+* DONE make mum's present
+* DONE determine whether 1TB drives will last or whether bigger drives necessary
+* DONE Install enzo's new ram and HDD
 * DONE purchases
 ** DONE otoflush
 ** DONE 4tb HDD
@@ -78,7 +93,7 @@ should either print =george= or =george_remote=
 * DONE test out kitty, migrate to it as default if it's good (just watch DT video)
 * DONE sysbs: add --enable-systemd-services
 * DONE hq .gitignore: all of GIMP stuff
-* DONE get remotes mountign working
+* DONE get remotes mounting working
 ** DONE Try uncommenting =user_allow_other= in /etc/fuse 
 This worked! Now see if a service running mount-shared-drives will work!
 ** try running mount-shared-drives

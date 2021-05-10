@@ -1,22 +1,25 @@
 * TODO Longer term TODOs
-** TODO [#A] GHD006 Canal Bathymetry
+** DONE [#A] GHD006 Canal Bathymetry
 *** TODO Review footage
 *** TODO Downstream (start here, client wants this first): 
 **** centre-run-01
 *** TODO Upstream: 
 **** east-run-02
 **** west-run-03
-** TODO [#A] ADK005 data demob
+** DONE [#A] ADK005 data demob
 ** TODO [#A] Write demob confluence page (JJ review)
 ** TODO [#A] metashape-cli-backend: die if metashape version too old
 ** TODO [#A] how-to lantern-photogrammetry: implement Thomas' changes
-** TODO [#B] metashape-cli: predefined expressions
-*** DONE change --print-predefined-expressions to --pretty-print-expressions
-*** DONE add --print-expressions,-p to print expressions as they are defined
-*** TODO investigate predefined expressions with values
 ** TODO [#B] metashape-cli: add examples
 ** TODO [#B] metashape-cli: write command (incl. substituted expression) to a file
 ** TODO [#B] metashape-cli: die if no expression given
+** TODO [#B] PI planning
+*** Plan all devices in need of 
+** TODO [#C] investigate quality of iPhone12 solid-state lidar
+** TODO [#C] metashape-cli: predefined expressions
+*** DONE change --print-predefined-expressions to --pretty-print-expressions
+*** DONE add --print-expressions,-p to print expressions as they are defined
+*** TODO investigate predefined expressions with values
 ** TODO [#C] lantern-photogrammetry: autoset seqview to Camera On Demand
 ** TODO [#C] metashape-cli: add --list-export-filetypes (for mesh and pointcloud)
 ** TODO [#C] fix bruno .tmux.conf (or whatever is causing autosuggestions to not work)
@@ -368,7 +371,7 @@ reset and push both need --force
 *** DONE Determine best format -> YAML
 *** DONE Ensure program runs with yaml as config (instead of json)
 * Week starting <2021-03-29 Mon>
-** <2021-03-31 Wed> Meeting with Bentley re: ContextCapture
+** <2021-03-31 Wed> Meeting with Bentley re: ContextCapture, siq day
 *** Bentley Meeting
 - ContextCapture is similar to Metashape in functionality
 - ContextCapture was an acquisition
@@ -380,3 +383,200 @@ reset and push both need --force
 - Pointclouds can be exported for cleaning before being re-imported for later stages
 - Get back to Glen re: what kind of dataset we would test with
 **** Questions
+** <2021-04-01 Thu> Tunnel 3D modelling, email re: bentley, small things
+*** DONE Send email re: Bentley ContextCapture
+*** TODO Get reacquainted with tunnel modelling workflow
+- Disregard run-01 downstream
+- Range/frequency changes mid-run
+  - check if this can be picked up by oculus-cat --info
+  - make sure video gen utility can handle this
+*** TODO Fix small things with yaml-to-csv
+* Week starting <2021-04-05 Mon>
+** <2021-04-08 Thu> Canal bathymetry
+*** TODO generate canal bathymetry
+*** TODO overlay sonar-to-points output on fan-view
+** <2021-04-09 Fri> Canal bathymetry
+*** TODO show points next to sonar fan view
+- look through video for good parts, note timestamp: *20210324T035900*
+- extract that exact record, run it through sonar-to-points
+*** TODO refactor code for readability
+*** TODO verify whether oculus-cat --info produces the same number of records as oculus-cat
+**** TODO If so, change logic to give sonar-to-points the correct input each time
+*** TODO roll everything into extract-sonar (maybe rename it)
+**** TODO Keep its mapping and usage semantics, but keep logic from generate-sonar-video
+*** TODO change format of pointclouds (convert to CSV and PCD)
+*** TODO Work out what's causing accordian problem
+One point from the problem zone:
+=20210326T003057.640000,1316,-133.382487549732,152.3867340541208,3.151806875855458=
+This file is the culprit:
+//mnt/pond/datasets/ghd/balickera-canal/20210325-insepction/inspections/day-02/downstream-canal/centre-run-01/platypus-01/sonar/Oculus_20210326_002928.oculus/
+start: 20210326T003054.392000
+end:   20210326T003057.985000
+* Week starting <2021-04-12 Mon>
+** <2021-04-12 Mon> - Fix sonar issues, documentation
+*** DONE Make a patched interim /sonar.bin/ with aberration fixed
+- Run only on specified file
+- Have a way of generating the plot of timestamps
+**** This worked, but let's check a few other things:
+- There is a step later in the run too, is that there in the original data?
+  - If so, fix it too
+*** TODO Regenerate downstream pointcloud
+*** TODO Write some documentation
+*** TODO Clean up code
+*** TODO Process upstream canal
+*** TODO Understand the new platform config
+** <2021-04-13 Tue> - Neaten code
+*** DONE Fix hole patching logic
+*** DONE Move all code into examples
+*** DONE fix platform config
+*** DONE remove code from projects, replace with a README
+** <2021-04-14 Wed> - Upstream canal, small lantern-photogrammetry fix, docs
+*** DONE lantern-photogrammetry: add check for seqview-annotations
+*** DONE Convert new pointcloud to CSV and PCD
+- Also make these files read-only
+*** TODO Verify whether these files are ready for submission to the client
+** <2021-04-15 Thu> - Upstream canal, investigate cv-cat issues, abyss-robotics build
+*** TODO Upstream canal processing
+*** TODO Investigate Fraser's issue with cv-cat viewing 
+Install an 18.04 VM
+*** DONE Discuss the mid-log parameter changes with Lash & Zdzislaw
+*** DONE fix the git commit template, update if it is on confluence
+*** DONE abyss-robotics build system
+*** TODO Document brute force test thing (in readme in projects)
+** <2021-04-16 Fri> - Try to improve pointcloud, 
+*** TODO pointcloud polishing
+**** TODO clean left and right individually
+**** TODO merge
+**** TODO implement manual fixed roll to localisation 
+try -2 degrees
+*** TODO metashape-cli: investigate depth maps quality parameter (default=4????)
+*** TODO Investigate a simpler parameter system for quality
+- Maybe reinstate configs
+- Otherise add flags
+*** TODO abyss-validate python 3.6 compatibility
+*** TODO abyss-validate add --machine-directory
+- --machine-directory and (--bag-directory and --image-directory are mutually exclusive)
+* Week starting <2021-04-19 Mon>
+** <2021-04-19 Mon> - More pointcloud polishing, lantern util bugfixes, validator bugfixes
+*** DONE Add artificial roll to pointclouds and check results
+*** TODO try to +black out+ or crop the top of the sonar image
+*must set --min-range for sonar-to-points.py* in order to crop
+**** DONE try only setting min range, not doing cv-cat crop
+Yep, that's good
+**** TODO play with this live, see if --max-range and --min-range can help to maximise the quality of the PC
+*** TODO generate lidar data too, view in CC
+*** TODO Make abyss-validate Ubuntu 18.04 compatible
+*** TODO abyss-validate: add --machine-directory
+** <2021-04-20 Tue> - new localisation, LiDAR data, abyss-validate testing
+*** TODO try to +black out+ or crop the top of the sonar image
+*must set --min-range for sonar-to-points.py* in order to crop
+**** DONE try only setting min range, not doing cv-cat crop
+Yep, that's good
+**** TODO play with this live, see if --max-range and --min-range can help to maximise the quality of the PC
+*** TODO generate lidar data too, view in CC
+*** TODO Make abyss-validate Ubuntu 18.04 compatible
+*** TODO abyss-validate: add --machine-directory
+*** DONE take measurements on lab wood
+*** TODO Investigate Fraser's issue with cv-cat viewing 
+Install an 18.04 VM
+** <2021-04-21 Wed> - Clean pointclouds, abyss-validate, calibration, lab wood
+*** DONE clean up pointclouds, review
+*** DONE take measurements on lab wood
+*** DONE housekeep fraser's calibration
+*** TODO Make abyss-validate Ubuntu 18.04 compatible
+*** TODO abyss-validate: add --machine-directory
+*** TODO generate LiDAR data differently
+Looks like sometimes the data field is longer than expected, investigate this further
+*** TODO maybe investigate --crop-{left,right} for process-sonar
+** <2021-04-22 Thu> - centre run tuning
+*** TODO ? try centre run with different rotation
+*** TODO ? try cropping left and right
+*** TODO document the commands used for pointcloud generation 
+*** TODO export pointclouds
+*** TODO GHD report polish
+**** DONE new side-by-side of sonar image and points
+**** DONE update links
+**** DONE enw screenshots ortho and persp
+**** DONE video noise screenshot
+**** DONE less/more sparse regions screenshot
+** <2021-04-23 Fri> - bugfixes for validator
+* Week starting <2021-04-26 Mon>
+** <2021-04-26 Mon> - ContextCapture evaluation, pull requests
+*** Fix problems and submit PR for data validation
+**** DONE add readme
+**** DONE add setup.py
+** <2021-04-27 Tue> - PR responses, more ContextCapture
+** <2021-04-28 Wed> - Respond to my PR, review ZSL's PR, more ContextCapture, investigate cv-cat bugfixes
+*** TODO finish responding to ZSL's feedback
+*** TODO review ZSL's PR
+*** TODO rerun ContextCapture with 1.1" sensor size
+*** TODO run Metashape with equivalent params
+*** TODO compare ContextCapture with Metashape 
+** <2021-04-29 Thu> - Complete data validation PR, review ros integration PR, CC evaluation
+*** Data validation PR
+Should have a call with ZSL to discuss:
+- Where would our generic code go 
+  - Abyss to iso format
+  - colour code from ribf-to-csv
+- mmap
+- Python autoformatting
+- oculus-cat: how to handle variable length binary data from other scripts/utilities
+** <2021-04-30 Fri> - CC eval, fix lantern-get bug, call ZSL
+*** TODO ContextCapture evaluation
+- Run on highest settings on buffalo, compare results
+- add notes about 23hr and random stopping to confluence
+*** DONE Fix lantern-get bug
+*** TODO Call ZSL to discuss:
+x Where would our generic code go 
+  - Abyss to iso format
+  - colour code from ribf-to-csv
+x mmap
+  - try it!
+x Python autoformatting
+  x read comparison
+  x add to confluence
+x oculus-cat: how to handle variable length binary data from other scripts/utilities
+  - one scan per file is easiest
+x update_all.sh
+  x compile a list of thing (in abyss-robotics) that we want to build
+  - tie into CI/CD
+  - what to do next
+* Week starting <2021-05-03 Mon>
+** <2021-05-03 Mon> - ADK005 report, CCEval, PRs
+*** DONE Send email re: lantern-get bug
+*** DONE ADK005 report updates
+**** DONE make a diagram demonstrating the point
+**** DONE copy to buffalo and commit projects
+*** DONE ContextCapture evaluation
+**** DONE Update confluence
+**** DONE export everything as 3MX, fix names, move to pond
+**** DONE Send an enail to Steve (CC Lash)
+**** DONE Run carpark dataset with CC
+copy output OBJ to pond
+*** TODO investigate mmap for efficiency improvements
+*** TODO submit a PR to bedrock with generic code
+- model it after comma (if that is sensible)
+- Tag or mention team leads to notify them of this code
+*** DONE implement ZSL's changes to robotics-validate
+** <2021-05-04 Tue> - LEAVE (Emily's graduation)
+** <2021-05-05 Wed> - robotics-validate pull request follow-up
+*** TODO Investigate mmap for validator
+- Currently we go through the =rosbag.Bag(filename)= interface, so will need to see whether we can maintain functionality using an interface with a Python file object
+- *You can give rosbag.Bag a file object, yay!*
+  - Unfortunately it isn't happy with that just yet
+*** DONE Write paragraph on how calipers work (comment no. 14 in [[https://docs.google.com/spreadsheets/d/1RCnDb6uR4q6Kj4r8ykb1TSGiYrUtZl1LKL5jo1d9Isw/edit#gid=0][this document]])
+*** DONE Send explanation to Tajamul
+** <2021-05-06 Thu> - finish validator PR, review TvB PR
+*** DONE Investigate mmap for validator
+*** TODO Review Thomas' PR for ros control dash
+*** 
+** <2021-05-07 Fri> - Planning planning planning
+*** DONE Read [[https://abyss-solutions.atlassian.net/wiki/spaces/PD/pages/1735327825/PL+Data+Processing+Summary+SW2][PL: Data Processing Summary]] through
+**** TODO Fill out Stage 1: GoPro -> Processed GoPro
+**** TODO Fill out Stage 3a: Image and video generation
+*** DONE Prettify the cross-section area diagram
+*** DONE Metashape thing for Eric
+* Week starting <2021-05-10 Mon>
+** <2021-05-10 Mon> - Metashape for eric, update-repositories
+*** TODO try again with lower settings for Eric's thing with Metashape
+*** TODO finish robotics' bersion of update_all.sh
