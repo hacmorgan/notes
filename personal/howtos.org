@@ -51,7 +51,7 @@ To see this in action, paste the code in emacs' scratch buffer, move the cursor 
 **** get integer representation of character (in this case, Q)
 #+begin_src emacs-lisp
 ?Q
-#+end_src
+#+end_s#<buffer howtos.org>rc
 * find ips and hostnames on network
 /courtesy of Tek/
 ** Find IPs on LAN:
@@ -82,7 +82,6 @@ add =-g= to compile command
 - =run= will run the program
 - =next= will step to the next line
 - =backtrace= will show the call stack (I think), useful for debugging segfaults etc
-
 
 * comma & snark
 ** installing on Arch Linux
@@ -150,3 +149,34 @@ vtk
 lvtk
 glew
 hdf5
+
+*** building libicu from source
+- Download a source distribution of libicu (68 as of the time of writing this)
+- Navigate into the directory
+#+begin_src bash
+./configure
+make
+sudo make install
+#+end_src
+
+* zfs
+** on Ubuntu (20.04)
+*** Installing zfs
+#+begin_src bash
+sudo apt install zfsutils-linux
+#+end_src
+*** Creating a (non-mirrored) pool
+#+begin_src bash
+sudo zpool create -m /mnt/storage storage /dev/sdb1
+#+end_src
+*** Import the desired pool
+By default, pools are unavailable until imported
+#+begin_src bash
+sudo zpool import # lists all pools
+sudo zpool import storage
+#+end_src
+*** Attach a new drive to mirror the first drive in the pool
+In this example, sdb1 is the original drive, and we are adding sda1
+#+begin_src bash
+sudo zpool attach storage /dev/sdb1 /dev/sda1
+#+end_src

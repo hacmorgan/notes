@@ -1,11 +1,14 @@
 Short-term (sub-project) TODOs, grouped by area
 
-* TODO bravio!!!
-* TODO make notify-send messages go away after a few seconds
-* TODO setup zfs and storage
+* TODO implement dijkstra (and save it somewhere)
+Need to do extract-min
+* TODO setup and test new mic system
+* TODO text tyre man
+* TODO book subie in for tyres
+* TODO successfully put a tty on terminal
 * TODO order a new headband for headphones
-* TODO new wallpapers 
 * TODO set up snapshots on all machines (timeshift)
+** TODO Write a timeshift-like utility
 * TODO george OS upgrade
 * TODO learn elisp
 ** TODO implement a shortcut (or different keybinding) for commenting in terminal
@@ -20,10 +23,18 @@ Short-term (sub-project) TODOs, grouped by area
 ** TODO bootloader
 ** TODO documentation
 * TODO new YouTube music script
+* TODO algorithms videos
 * TODO organise resistors
 * TODO Karen blockchain
 * TODO Contemporary
 * TODO csv-plot
+** TODO investigate zoom rectangle further, e.g. print rubber band box
+** TODO try plain (non-rectangle) zooming -> see if still problem
+* DONE setup zfs and storage
+* DONE book dentis
+* DONE bravio!!!
+* DONE make notify-send messages go away after a few seconds
+* DONE new wallpapers 
 * DONE put switch on LED lamp
 * DONE =mount-shared-drives=
 ** DONE add =--verbose=

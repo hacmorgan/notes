@@ -580,3 +580,74 @@ copy output OBJ to pond
 ** <2021-05-10 Mon> - Metashape for eric, update-repositories
 *** TODO try again with lower settings for Eric's thing with Metashape
 *** TODO finish robotics' bersion of update_all.sh
+** PI PLANNING FOR 2 DAYS
+** <2021-05-13 Thu> - Metashape for Eric, CC Eval comparison, clean abyss-internal, data processing handover, build system testing
+*** DONE try again with lower settings for eric's metashape
+Message Eric!
+*** DONE make metashape-cli save the invoking command to a text file!
+*** TODO make CC eval table (on confluence page
+*** DONE clean out abyss-internal
+*** DONE finish data processing handover confluence page
+*** TODO test the build system
+First test on george to iron out major bugs
+| OS           | Fresh install? |
+|--------------+----------------|
+| Arch         | No             |
+|--------------+----------------|
+| Ubuntu 18.04 | Yes            |
+|              | No             |
+|--------------+----------------|
+| Ubuntu 20.04 | Yes            |
+|              | No             |
+** <2021-05-14 Fri> - Final CC eval stuff, more build system tweaks and improvements, validate sonar files
+*** DONE Add some screenshots to confluence page for ContextCapture eval
+*** TODO test build system and fix bugs
+*** TODO add capacity to validate sonar files to robotics-validate
+* Week starting <2021-05-17 Mon>
+** <2021-05-17 Mon> - Keep trying with Metashape for carpark DSLR, test build system on 16.04, validate sonar files, review ADK005 report
+*** TODO metashape carpark DSLR dataset
+*** DONE test build system on 16.04
+**** TODO install hq and ssh keys on 18.04
+**** TODO install 16.04 with hq and ssh keys
+*** TODO validate sonar files
+*** DONE review ADK005 report
+** <2021-05-18 Tue> - Email Steve, validate sonar
+*** TODO Expose oculus::extract_payload() in Python to read data from binary files
+**** TODO add pybind11 to dependencies in build system
+**** TODO convert bad oculus file to .bin format
+**** TODO chase up opencv build issue
+** <2021-05-19 Wed> - LEAVE: Graduation
+** <2021-05-20 Thu> - Finish sonar implementation for validator
+*** TODO Sonar implementation: finish all todos, submit for review
+**** Install pybind11
+**** Install the compiled file to site packages
+*** DONE Also ask ZSL how we should merge feature/support-validation-of-sonar-data
+*** TODO check if bathymetry generation branch can be merged, submit PR with review for Lash
+** <2021-05-21 Fri>
+*** DONE add NON_ROS_INSTALL to root makefile in abyss-robotics
+*** DONE make sure tools are built before sensors
+*** TODO test full install on fresh clone VM
+*** TODO Send email out to team re: update-repositories incl. how to not clobber their installs
+*** TODO make new VMs with bigger maximum drive sizes
+* Week starting <2021-05-24 Mon>
+** <2021-05-24 Mon> - GoPro image enhancement
+*** TODO Find test datasets
+- lantern: /mnt/pond/datasets/abyss-internal/platypus/explorer/20210325-balickera-tunnel/imaging-run-4
+- gopro:
+*** TODO Determine whether anything else is necessary for image undistortion
+- find existing processed outputs
+- if they require processing that is not accounted for already by Fraser's doc, find out who knows what to do
+*** TODO Get comfortable running the commands Fraser has provided
+** <2021-05-25 Tue> - GoPro image enhancement
+*** DONE Add abyss-web to update-repositories install
+*** DONE generate timestamped GPS data fro david/sean
+*** DONE Fix parallel image generation for platypus
+*** DONE Write usage examples for enhance-lantern-images
+*** DONE Complete functionality for enhance-lantern-images and test
+*** TODO Implement undistortion based on Suchet's commands.txt
+*** TODO Implement a 'do-all' operation for image enhancement and undistortion
+** <2021-05-26 Wed> - Planning, meetings, GoPro undistortion
+*** DONE Verify whether or not image enhancement produces the same size images
+*** TODO Add gopro and lantern configs to abyss-robotics/configs
+*** TODO Implement undistortion based on Suchet's commands.txt
+*** TODO Implement a 'do-all' operation for image enhancement and undistortion
