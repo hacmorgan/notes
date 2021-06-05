@@ -648,6 +648,59 @@ First test on george to iron out major bugs
 *** TODO Implement a 'do-all' operation for image enhancement and undistortion
 ** <2021-05-26 Wed> - Planning, meetings, GoPro undistortion
 *** DONE Verify whether or not image enhancement produces the same size images
-*** TODO Add gopro and lantern configs to abyss-robotics/configs
-*** TODO Implement undistortion based on Suchet's commands.txt
+*** DONE Add gopro and lantern configs to abyss-robotics/configs
+*** DONE Implement undistortion based on Suchet's commands.txt
 *** TODO Implement a 'do-all' operation for image enhancement and undistortion
+** <2021-05-27 Thu> - Wrap up GoPro undistortion
+*** DONE Add a lantern config for image undistortion
+*** DONE Test undistortion logic
+*** DONE sort all input file finds
+*** DONE try teeing log_progress
+*** DONE implement individual-video-streams
+*** TODO investigate whether using lantern-get's parallelisation is enough
+
+* Week starting <2021-05-31 Mon>
+** <2021-05-31 Mon> - Build system demo, read binary pointcloud into python
+*** TODO Send email to tech ppl re: comma and snark
+*** DONE Build system demo
+Points to discuss:
+**** TODO print installed at the end
+**** TODO test install on 18.04
+*** TODO Read binary pointcloud into Python
+**** TODO Add to build system
+**** TODO Make importable library
+**** DONE ? Use =with ...= syntax 
+**** DONE Have a generator to generate one scan at a time
+**** TODO Check that Open3D can take a numpy array as a pointcloud
+** <2021-06-01 Tue> - Resolve build system issues, complete reading binary pointclouds
+*** DONE Add option to exclude NaN when extracting pointclouds
+*** TODO Resolve build system issues
+**** DONE Print installed packages at the end
+**** TODO Send email to tech ppl re: comma and snark
+*** DONE Read binary pointcloud into Python
+**** DONE Finish doxygen
+**** DONE Catch exceptions caused by struct.unpack() on less than 44 bytes
+**** DONE Test on a whole directory
+**** DONE Add to build system (make importable library)
+**** DONE Check that Open3D can take a numpy array as a pointcloud
+*** TODO Generate example data
+**** DONE Lidar binary files
+**** TODO YAML for the remaining data
+**** TODO Move into appropriate place
+*** TODO Install metashape module on buffalo
+*** TODO review Zdzislaw's review
+** <2021-06-02 Wed> - Resolve build system issues, build system review, metashape pyhton module
+*** TODO Resolve build system issues
+**** DONE Print installed packages at the end
+**** TODO Try to get abyss forks of comma and snark to build
+**** TODO Send email to tech ppl re: comma and snark
+*** DONE Generate example data
+**** DONE Lidar binary files
+**** DONE YAML for the remaining data
+**** DONE Move into appropriate place
+*** DONE Install metashape module on buffalo
+*** TODO review Zdzislaw's review
+**** TODO add zstandard to dependencies
+**** TODO add make uninstall to update-repositories
+**** TODO add make clean to root Makefile
+** <2021-06-03 Thu> - Review Zdz review, send email to tech

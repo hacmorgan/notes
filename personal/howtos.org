@@ -32,8 +32,8 @@ You can also set this in the confog file like so (just a random example):
  #+begin_src emacs-lisp
 (c-set-offset 'substatement-open 0)
  #+end_src
-** elisp
-*** example: print elements of a list
+** elisp (up to *9 How Lists are Implemented*)
+*** *example*: print elements of a list
 #+begin_src emacs-lisp
 (setq animals '(gazelle giraffe lion tiger))
 
@@ -42,11 +42,59 @@ You can also set this in the confog file like so (just a random example):
   (while list
     (print (car list))
     (setq list (cdr list))))
-
 (print-elements-of-list animals)
 #+end_src
 
 To see this in action, paste the code in emacs' scratch buffer, move the cursor below the code (*that's important*) and run =M-x eval-print-last-sexp= (or C-j)
+*** *example*: delete text up to occurence of string
+This is similar to (though a cut-down verion of) the zap-to-char function, which is shown in the elisp tutorial. 
+
+This first verison kills up to (and including) the next occurence of the string
+#+begin_src emacs-lisp
+;; abcdefghijklmnopqrstuvwxyz
+(kill-region (point)
+             (progn (search-forward "cde" nil nil -2)
+                    (point)))
+;; abcdefghijklmnopqrstuvwxyz
+#+end_src
+
+This first verison kills up to (and including) the previous occurence of the string, dictated by the final argument to search-forward. -2 is required, because otherwise it will delete the fucntion definition
+#+begin_src emacs-lisp
+;; abcdefghijklmnopqrstuvwxyz
+(kill-region (point)
+             (progn (search-forward "cde" nil nil -2)
+                    (point)))
+;; abcdefghijklmnopqrstuvwxyz
+#+end_src
+*** *example*: interactive functions
+To see all of the prefix characters, try =C-h C-h f interactive=
+
+The interactive statement dictates that the given argument is of type string (followed by the prompt)
+#+begin_src emacs-lisp
+(defun test-search (string)
+  "Move point after next occurence of given string"
+  (interactive "sJump to string: ")
+  (search-forward string))
+#+end_src
+
+This one dictates that the user should be prompted for two numbers one after another (the \n separated arguments)
+#+begin_src emacs-lisp
+(defun add (first second)
+  "Add two numbers"
+  (interactive "nFirst: \nnSecond: ")
+  (message "Sum: %d" (+ first second)))
+#+end_src
+*** *example*: print 3rd element of kill-ring (if it exists)
+Note: this function is not interactive (i.e cannot be run using M-x third-killed), and thus the DECL part of the function definition is not given
+#+begin_src emacs-lisp
+(defun third-killed ()
+  "Print the 3rd element of the kill-ring, print message if fewer than 3 elements"
+  (let ((elem (car (nthcdr 3 kill-ring))))
+    (if elem
+        (message "Third element of kill-ring: %s" elem)
+      (message "kill-ring has fewer than 3 elements"))))
+#+end_src
+
 *** basic types
 **** get integer representation of character (in this case, Q)
 #+begin_src emacs-lisp
