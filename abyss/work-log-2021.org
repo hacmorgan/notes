@@ -7,15 +7,16 @@
 **** east-run-02
 **** west-run-03
 ** DONE [#A] ADK005 data demob
+** TODO [#A] Things to ask Zdzislaw
+*** Is the robotics-stages example good enough (should the stubs be more involved?)
+*** Should we make a make uninstall?
+** TODO [#A] Finish reviewing Mitch's changes
 ** TODO [#A] Write demob confluence page (JJ review)
 ** TODO [#A] metashape-cli-backend: die if metashape version too old
 ** TODO [#A] how-to lantern-photogrammetry: implement Thomas' changes
 ** TODO [#B] metashape-cli: add examples
 ** TODO [#B] metashape-cli: write command (incl. substituted expression) to a file
 ** TODO [#B] metashape-cli: die if no expression given
-** TODO [#B] PI planning
-*** Plan all devices in need of 
-** TODO [#C] investigate quality of iPhone12 solid-state lidar
 ** TODO [#C] metashape-cli: predefined expressions
 *** DONE change --print-predefined-expressions to --pretty-print-expressions
 *** DONE add --print-expressions,-p to print expressions as they are defined
@@ -704,3 +705,173 @@ Points to discuss:
 **** TODO add make uninstall to update-repositories
 **** TODO add make clean to root Makefile
 ** <2021-06-03 Thu> - Review Zdz review, send email to tech
+* Week starting <2021-06-07 Mon>
+** <2021-06-07 Mon> - Prefect testing and beginning implementation
+** <2021-06-08 Tue> - JJ review, MG review, robotics-stages stub implementation
+*** DONE test https git clone, respond to JJ
+*** TODO Review Mitch's code
+*** TODO Adk zdz about make uninstall (both for update-repositories and abyss-robotics)
+*** TODO Add type hints to confluence page
+** <2021-06-09 Wed> - Map out SW2 scaffold
+*** TODO Make the config accurate (or at least better) in terms of inputs/outputs
+*** TODO see if fabric stages can handle depends as dicts
+*** TODO Try dry running (see if it will even work with just input data)
+*** TODO Write stage stubs, preferably with enough structure to be able to pad them out later
+*** DONE Add to the lantern miro board (see JJ's messages)
+*** DONE Merge code
+** <2021-06-10 Thu> - Generate data for Lash
+*** DONE Generate tunnel data for Lash
+*** DONE Get the ball rolling with subsea processing handover
+*** DONE Fix issues with Lash's PR
+*** TODO stubs and hook scripts
+* Week starting <2021-06-14 Mon> (Queen's birthday public holiday)
+** <2021-06-15 Tue> - make stub stages for robotics-stages, write some documentation
+*** DONE finish stub stages
+Make sure each stage is at least reading and writing the correct set of files
+Decided to can it for now, too long
+*** TODO write a README for robotics-stages
+*** TODO hook robotics-stages into the build system
+** <2021-06-16 Wed> - Finish readme, robotics-stages build, combinational logic for JJ
+*** TODO write a README for robotics-stages
+Mention at the top that only the first two sections are relevant
+*** TODO hook robotics-stages into the build system
+*** DONE email agisoft
+*** TODO and/or seqview categories
+**** TODO be sure to add an example showing this
+**** TODO also move lea-preprocess into abyss-robotics and rename it
+** <2021-06-17 Thu> - Finish README, robotics-stages build, combinational logic
+*** DONE [#A] Update documentation for BP005 processing
+*** DONE [#A] hook robotics-stages into the build system
+Fix remaining issues
+*** DONE [#B] write a README for robotics-stages
+Mention at the top that only the first two sections are relevant
+*** DONE [#B] Add error messages to Makefiles
+*** TODO [#C] Add any required features to lantern-preprocess
+*** TODO [#C] Change behaviour of --mask in lantern-photogrammetry to take a directory name
+*** TODO [#C] Remove dependencies on having an input directory from lantern-photogrammetry when --metashape-only used
+*** TODO [#C] Investigate robotics-stages for LE processing
+Probably a bit overkill
+*** DONE and/or seqview categories
+**** DONE be sure to add an example showing this
+**** DONE also move lea-preprocess into abyss-robotics and rename it
+** <2021-06-18 Fri> - SD cards
+*** TODO Find existing SD copying code, roll into a new utility
+**** TODO handle distinct port addresses with config/command line options
+**** TODO verify data was copied correctly (somehow)
+**** TODO Document usage and functionality
+* Week starting <2021-06-21 Mon>
+** <2021-06-21 Mon> - SD card testing
+*** DONE Get SD card reading working reliably
+*** DONE test on bisous
+*** DONE print validation to file
+*** DONE fix exiftool error message
+GoPro just writes EXIF data poorly, nothing to be done
+*** DONE test when:
+- no hub connected
+- different hub connected
+*** DONE lantern stuff
+** <2021-06-23 Wed> - Play with open3d ICP
+*** TODO prepare sprint demo
+Start SD transfer
+*** TODO Open3D ICP
+There is /point-to-point/ and /point-to-plane/ ICP, lash only ever used /point-to-point/
+**** TODO try open3d example
+**** TODO apply to tunel dataset
+** <2021-06-24 Thu> - Start real ICP implementation
+*** TODO Start filling out laser-localisation
+* Week starting <2021-06-28 Mon>
+** <2021-06-28 Mon> - Localisation continues
+*** DONE Get ICP actually working (dangit!)
+Try accumulating scans
+*** DONE Do the thing from Zdz's message
+** <2021-06-29 Tue> - Localisation
+*** DONE Review stuff with Lash
+|-------------------------------------------+-------------------------------------------|
+| Transform local to global frame           | Shift the map                             |
+|-------------------------------------------+-------------------------------------------|
+| Fastest with single scan matching, (1:33) | Slower (2:00) for window size of 10,      |
+| Slow with all scan matching(5:58)         | very slow (8:49) for a window size of 500 |
+| (2:00) for a window size of 10            |                                           |
+|-------------------------------------------+-------------------------------------------|
+| Produces correct localisation             | Output localisation is weird but map      |
+|                                           | is generated correctly so idk             |
+*** DONE Make RIBF generator
+Should be able to handle:
+- Directories and single files
+- Compressed and uncompressed
+*** DONE Get input data reading correctly
+*** DONE Use velocity from realsense to improve deltaTransform
+*** TODO Test in a tunnel
+** <2021-06-30 Wed> - Localisation
+*** DONE Polishing and refining functionality, fixing bugs
+*** DONE Test in a tunnel
+Didn't fully work
+** <2021-07-01 Thu> - Localisation
+*** DONE Config wrangling
+**** DONE add start and end times to global config
+**** DONE handle heirarchy
+*** TODO Removing unwanted points
+**** TODO update platform config
+*** TODO make ribf and rslidar modules use integer microseconds
+*** TODO create generic python module, move functions in there and import it
+*** TODO Ask questions of ZDZ
+- prefix
+- make uninstall
+- python module for colour etc
+- python module naming
+- ribf
+- timestamps to microseconds
+
+** <2021-07-02 Fri> - Localisation, other small niceties
+*** TODO Removing unwanted points
+**** TODO update platform config
+*** TODO make ribf and rslidar modules use integer microseconds
+*** TODO create generic python module, move functions in there and import it
+*** TODO Investigate minimal cleaning dense clouds
+* Week starting <2021-07-05 Mon>
+** <2021-07-05 Mon> GoPro testing in the office
+** <2021-07-06 Tue> - GoPro documentation, fix build system, localisation stuff
+*** DONE Complete GoPro docs
+*** DONE Finish fixing build system
+*** TODO Exclude localisation points
+*** TODO make ribf and rslidar modules use integer microseconds
+*** TODO create generic python module, move functions in there and import it
+** <2021-07-07 Wed> - Polish off localisation stuff
+*** DONE Exclude localisation points
+**** DONE Test it works with config paths explicitly given
+**** DONE check configs are installed correctly and test with installed configs
+*** DONE make ribf and rslidar modules use integer microseconds
+*** TODO create generic python module, move functions in there and import it
+** <2021-07-08 Thu> - PR reviews, annual review prep
+*** DONE REview Zdz's PR
+*** TODO Finish reviewing Mitch's PR
+*** TODO Prepare for performance review
+*** TODO ribf-to-csv
+**** TODO play with std::map separately to get a feel
+** <2021-07-09 Fri> - seqview big images, ribf-to-csv multi-fields, ocn002 processing
+*** TODO seqview - generate metadata and big images
+* Week starting <2021-07-12 Mon>
+** <2021-07-12 Mon> - BP005 processing
+- ml8 bending shoe chain
+  - links 1-7 (model-1.7.psx)
+    - ready to go
+    - marker on link 2
+  - links 8-20
+    - masks ready on V7
+- ml8-ground-chain
+  - datasets still needed, not on files.com yet
+- ml8-upper-ground-chain
+  - order of links unknown, just be consistent
+- ml8-links-below-platform-chain
+  - sparse cloud ready
+  - mesh to be created
+*** TODO Train V7 link segmentation
+** <2021-07-13 Tue>
+*** TODO Train V7 link segmentation
+*** DONE run darktable test
+*** TODO document building darktable from source
+*** DONE train tajamul
+*** DONE continue data download
+*** DONE fix lantern-photogrammetry (after darktable test)
+*** TODO start slicing models (after fixing lantern-photogrammetry)
+

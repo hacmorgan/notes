@@ -1,13 +1,16 @@
 Short-term (sub-project) TODOs, grouped by area
 
+* TODO Get emacs terminal comments on george looking like they do on bruno
+* TODO order components for oxie tower
+* TODO take battery out of projector
+* TODO replace pelicomp trackbol
 * TODO text tyre man
 * TODO book subie in for tyres
 * TODO successfully put a tty on terminal
-* TODO learn elisp
-** TODO implement a shortcut (or different keybinding) for commenting in terminal
-** TODO implement changing line numbers
-* TODO Arduino motor control for speakers
-** TODO test motor control (including strength)
+try:
+#+begin_src bash
+/sbin/agetty --local-line 9600n7 /dev/ttyUSB0 vt52
+#+end_src
 * TODO Disassemble toothbrush
 * TODO rename surface-control-panel to something better and get it running on george
 * TODO Brightness control on bisous
@@ -16,13 +19,20 @@ Short-term (sub-project) TODOs, grouped by area
 ** TODO bootloader
 ** TODO documentation
 * TODO new YouTube music script
-* TODO algorithms videos
 * TODO organise resistors
 * TODO Karen blockchain
 * TODO Contemporary
+Up to 2.7 Build your application
 * TODO csv-plot
 ** TODO investigate zoom rectangle further, e.g. print rubber band box
-** TODO try plain (non-rectangle) zooming -> see if still problem
+* DONE algorithms videos
+* DONE Arduino motor control for speakers
+** TODO test motor control (including strength)
+* DONE GIMP for brown weekly
+* DONE learn elisp
+** DONE implement a shortcut (or different keybinding) for commenting in terminal
+** DONE implement changing line numbers
+* DONE switch to growth investment for REST
 * DONE add a systemd service to delete ~/tmp and verify that it works
 * DONE add storage to mount-shared-drives
 * DONE bravio!!!

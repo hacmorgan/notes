@@ -32,7 +32,7 @@ You can also set this in the confog file like so (just a random example):
  #+begin_src emacs-lisp
 (c-set-offset 'substatement-open 0)
  #+end_src
-** elisp (up to *9 How Lists are Implemented*)
+** elisp (up to *11.3.3 Recursion with a list*)
 *** *example*: print elements of a list
 #+begin_src emacs-lisp
 (setq animals '(gazelle giraffe lion tiger))
@@ -93,6 +93,29 @@ Note: this function is not interactive (i.e cannot be run using M-x third-killed
     (if elem
         (message "Third element of kill-ring: %s" elem)
       (message "kill-ring has fewer than 3 elements"))))
+#+end_src
+*** *example*: pop head off list using while loop
+n.b. this can also be done with the =dolist= macro
+#+begin_src emacs-lisp
+(setq animals '(fatfish chonkycow tubbytiger))
+(while animals
+  (progn (setq animals (cdr animals)) (message "Head of animals: %s" (car animals))))
+#+end_src
+*** *example*: printing lists with recursion
+#+begin_src emacs-lisp
+  (defun recursive-print-forward (list)
+      "Print each element in order"
+      (when list
+        (print (car list))
+        (recursive-print-forward (cdr list))))
+
+  (defun recursive-print-backward (list)
+    "Print each element in order"
+    (when list 
+      (let ((elem (car list))) 
+        (recursive-print-backward (cdr list))
+        (print elem))))
+(recursive-print-backward '(alpha beta gamma delta))
 #+end_src
 
 *** basic types

@@ -35,7 +35,7 @@ diff the useful-scripts verison
 *** use cmake to install scripts (and configs if possible)
 
 * Editors & Other Tools
-** TODO Find/write automatic Doxygen thing for emacs
+** DONE Find/write automatic Doxygen thing for emacs
 * Non-technical
 ** Resume
 Write in ORG mode, translate to LaTeX and HTML
