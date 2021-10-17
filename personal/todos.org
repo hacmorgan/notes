@@ -1,8 +1,13 @@
 Short-term (sub-project) TODOs, grouped by area
 
-* TODO Get emacs terminal comments on george looking like they do on bruno
-* TODO order components for oxie tower
-* TODO take battery out of projector
+* TODO investigate docopts as a replacement for bash-std
+** TODO =em=: 
+*** TODO add docopts auto-clone and install to bash-std
+*** TODO replace bash-std with docopts
+** TODO =sysbs=: 
+*** TODO replace bash-std with docopts
+** TODO =update-repositories=:
+*** TODO replace bash-std with docopts
 * TODO replace pelicomp trackbol
 * TODO text tyre man
 * TODO book subie in for tyres
@@ -19,12 +24,17 @@ try:
 ** TODO bootloader
 ** TODO documentation
 * TODO new YouTube music script
+Also investigate a simple text based youtube music cli script
 * TODO organise resistors
 * TODO Karen blockchain
 * TODO Contemporary
-Up to 2.7 Build your application
+** TODO Improve quick start guide documentation
+** TODO Run the tests
 * TODO csv-plot
 ** TODO investigate zoom rectangle further, e.g. print rubber band box
+* DONE order components for oxie tower
+* DONE Get emacs terminal comments on george looking like they do on bruno
+* DONE take battery out of projector
 * DONE algorithms videos
 * DONE Arduino motor control for speakers
 ** TODO test motor control (including strength)

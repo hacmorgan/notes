@@ -200,6 +200,7 @@ and then run =sudo ldconfig= to get everything up to speed.
 cmake
 socat
 zeromq
+fmt
 gtest
 procps-ng
 recode
@@ -251,3 +252,13 @@ In this example, sdb1 is the original drive, and we are adding sda1
 #+begin_src bash
 sudo zpool attach storage /dev/sdb1 /dev/sda1
 #+end_src
+* python
+** Reimport package (or source file) from interperter
+#+begin_src python
+import importlib
+importlib.reload(packageName)
+#+end_src
+** Fit data to python function
+See [[https://github.com/hacmorgan/one-offs/blob/main/franklynne-weight/calc_weight.py][calc_weight.py]]
+** Plotting data with dates as x axis
+See [[https://github.com/hacmorgan/one-offs/blob/main/franklynne-weight/calc_weight.py][calc_weight.py]]

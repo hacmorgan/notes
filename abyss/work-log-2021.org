@@ -1,15 +1,6 @@
-* TODO Longer term TODOs
-** DONE [#A] GHD006 Canal Bathymetry
-*** TODO Review footage
-*** TODO Downstream (start here, client wants this first): 
-**** centre-run-01
-*** TODO Upstream: 
-**** east-run-02
-**** west-run-03
-** DONE [#A] ADK005 data demob
-** TODO [#A] Things to ask Zdzislaw
-*** Is the robotics-stages example good enough (should the stubs be more involved?)
-*** Should we make a make uninstall?
+ Longer term TODOs
+** TODO [#A] write up (on Confluence) plan to move lantern processing to python
+Include Mitch in this process
 ** TODO [#A] Finish reviewing Mitch's changes
 ** TODO [#A] Write demob confluence page (JJ review)
 ** TODO [#A] metashape-cli-backend: die if metashape version too old
@@ -866,12 +857,917 @@ Didn't fully work
   - sparse cloud ready
   - mesh to be created
 *** TODO Train V7 link segmentation
-** <2021-07-13 Tue>
-*** TODO Train V7 link segmentation
+** <2021-07-13 Tue> - training Taj
+*** DONE Train V7 link segmentation
 *** DONE run darktable test
 *** TODO document building darktable from source
 *** DONE train tajamul
 *** DONE continue data download
 *** DONE fix lantern-photogrammetry (after darktable test)
 *** TODO start slicing models (after fixing lantern-photogrammetry)
+** <2021-07-14 Wed> - BP005 processing
+*** DONE start slicing models (after fixing lantern-photogrammetry)
+*** DONE generate textures for all links
+*** TODO compare speeds of processing using SSDs vs pond
+*** DONE build darktable on buffalo and document building darktable from source
+*** TODO ensure lantern-photogrammetry uses images without masks
+** <2021-07-15 Thu> - BP005 processing automation
+*** TODO compare speeds of processing using SSDs vs pond
+*** TODO ensure lantern-photogrammetry uses images without masks
+*** TODO Investigate the progress callback
+Should be as simple as creating a function to just print progress in metashape-cli-backend, then it can be called
+*** TODO Update the process in metashape-cli to generate textured model from depth maps
+*** TODO automate the process
+**** TODO Work out the best way to do that
+e.g. python vs bash
+*** TODO processing
+**** TODO ml8-ground-chain
+** <2021-07-16 Fri> - BP005 processing automation
+** TODO 
+* Week starting <2021-07-19 Mon>
+** <2021-07-19 Mon> - BP005 processing, seqview metadata
+*** DONE reduce the amount of output from waiting for files
+*** DONE set up bruno arch for processing
+*** DONE seqview annotations
+*** TODO continue processing
+find how far the other one got
+*** TODO generate seqview metadata
+** <2021-07-20 Tue> - BP005 processing
+*** TODO see how far bruno got (update spreadsheet)
+*** TODO finish sourcing functions in stages-utils.sh
+*** TODO write email to jj re: exporting the chain model, memory usage, etc
+*** TODO Run calibration datasets on bruno
+** <2021-07-21 Wed> - BP005 processing automation
+*** DONE Update stages
+**** DONE move more logic to =stages-utils.sh=
+**** DONE update stages scripts
+**** DONE execute processing
+*** DONE Run processing
+** <2021-07-22 Thu> - BP005 processing
+*** DONE update tracker sheet
+*** DONE export & slice ml8 links
+*** DONE build textured models for calibration links
+*** DONE generate calibration model for the 23rd
+** <2021-07-23 Fri> - BP005 processing
+*** DONE Download and prepare masks from V7 for ml7-bending
+*** TODO compare binary and non-binary PLYs
+**** file size
+**** loading time (into metashape)
+**** can polyworks load it?
+*** TODO slice ml8 ground chain
+Do this first while buffalo's metashape license isn't in use
+**** TODO ask jordan how we can tell which link is which
+*** TODO review Zdz's PR
+*** TODO re-export models as binary
+**** TODO ml8 bending shoe links 8-20
+**** TODO ml8 ground chain
+**** TODO ml8-upper-ground-chain
+**** TODO ml8-links-below-platform
+* Week starting <2021-07-26 Mon>
+** <2021-07-26 Mon>
+*** TODO Aug 16-18 - GHD delivery, delivery 3 weeks from 20 aug
+*** TODO Nov 19 - Scottish water initial delivery (1 mo fater end of job), final delivery 3mo after end of job (20/01/2022)
+** <2021-07-27 Tue> - PI PLANNING
+** <2021-07-28 Wed> - PI PLANNING
+** <2021-07-29 Thu> - BP005 processing, metashape-cli improvements, plan for demo
+*** TODO Continue BP005 processing
+*** DONE Apply improvements to metashape-cli
+**** DONE Limit progress messages to 0.2% increments
+**** DONE Calculate ETA
+*** TODO Make a plan for lantern eye processing
+*** TODO review calibration script
+*** TODO add comma & snark wiki to software
+** <2021-07-30 Fri> - Lantern presentation
+*** DONE Prepare for lantern presentation
+*** DONE Check lantern-photogrammetry still works
+e.g. did changing =--import-lantern-directory= to =--import-lantern-dataset= cause any problems?
+e.g. does the default routine still work?
+*** TODO add stuff to Jira
+*** TODO review calibration script
+*** TODO add comma & snark wiki to software
+* Week starting <2021-08-02 Mon>
+** <2021-08-02 Mon> - BP005 manual stuff, subsea processing onboarding, comma & snark wiki, calibration script
+*** DONE get up to speed on processing progress
+*** DONE onboard Cici and Daniel
+*** TODO place markers on links and slice links from ground chains
+*** DONE add stuff to Jira
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO add comma & snark wiki to software
+*** DONE install metashape on RDS
+** <2021-08-03 Tue> - Debugging, onboarding
+*** DONE Fix Fraser's problem
+*** DONE set accuracies on remaining models and allocate work to Cici and Daniel
+*** DONE place markers on links
+*** TODO slice links from ground chains
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO add comma & snark wiki to software
+** <2021-08-04 Wed> - Slicing
+*** DONE inform eric of ROI ML etc
+*** DONE Take screenshot and slice ML5 ground chain
+*** TODO try to "align selected cameras" -> might improve ml8 accuracy
+**** TODO duplicate chunk
+**** TODO see if this works using metashape-cli 
+*** TODO Slice ML8 ground chain
+*** DONE only pull selected repos with --only-do in update-repositories
+*** DONE robotics-validate: add check: is topic actually in bag?
+This is already there, that bug is hard to find
+*** DONE robotics-validate: append bag topic before magnitude below etc
+*** DONE robotics-validate: print dropped image only once (it prints twice with Platypus)
+Same again!
+*** DONE plots are still being generated when shouldPlot is False
+*** DONE email JJ
+*** TODO vnc buffalo
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO add comma & snark wiki to software
+** <2021-08-05 Thu> - Some slicing
+*** DONE Validate link numbers using spreadsheet
+**** DONE ml8 ground chain: correct link numbers in Metashape
+**** DONE ml8 ground chain: correct link numbers in gimp
+**** DONE ml5 ground chain: correct link numbers in Metashape
+**** DONE ml5 ground chain: correct link numbers in gimp
+**** DONE ml5 ground chain: correct link numbers in filenames
+**** DONE ml8 upper ground chain:         correct link numbers in Metashape
+**** DONE ml8 upper ground chain:         correct link numbers in filenames
+**** DONE ml8 links below platform chain: correct link numbers in Metashape
+**** DONE ml8 links below platform chain: correct link numbers in filenames
+**** DONE ml7 bending shoe chain: check chain orientation
+**** DONE ml7 bending shoe chain: check link 1 is not link 19
+*** TODO Slice ML8 ground chain
+*** DONE Add new metashape-cli expression for aligning cameras
+**** TODO optionally: investigate adding cameras without removing the existing alignment
+*** TODO ? Try reconstructing ml5 ground chain with even more cameras
+*** TODO vnc buffalo
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO add comma & snark wiki to software
+** <2021-08-06 Fri> - Slicing, documentation, flare-stacks model
+*** TODO Slice ML8 ground chain
+*** DONE fix report with Tajamul
+*** DONE crop noise out of OCN002 models
+**** DONE 1-20
+**** DONE 1-30
+**** DONE 2-25
+**** DONE 2-30
+**** DONE 3-20
+**** DONE 3-30 - no reslice, but T needs to drag a caliper
+**** DONE 4-20
+**** DONE 5-20 - no reslice, but zone f in-plane right caliper is slightly off
+**** DONE 5-25
+*** DONE flare-stacks model
+*** TODO vnc buffalo
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO add comma & snark wiki to software
+* Week starting <2021-08-09 Mon>
+** <2021-08-09 Mon> - fix metashape-cli, flare stacks reconstruction, docs
+*** DONE fix metashape-cli
+*** DONE fix bugfix branch
+*** DONE Slice ML8 ground chain
+Check if local copy up to date
+*** DONE flare-stacks reconstruction
+*** TODO vnc buffalo
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO add comma & snark wiki to software
+*** TODO start a confluence page on scaling processing
+**** TODO current pain points
+**** TODO predicted pain points and barriers to scaling
+** <2021-08-10 Tue> - start fixing bad reconstructions
+*** DONE test ssh X11 forwarding after removing libxcb on george
+*** TODO robotics-validate improvements
+**** TODO plot dropped images
+**** TODO check if matplotlib can deal with large amounts of data
+**** TODO make plots bigger
+**** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
+*** DONE update /is good enough/ status on tracker
+*** TODO copy ml7 bending shoe chain back to pond
+*** TODO fix texture on ml8-15 ocn002 model
+*** TODO investigate fixes for bad reconstructions
+Set up and conduct a proper test, with documentation
+**** TODO do quality settings (lower qual depth maps) help or hurt?
+**** TODO would using masks (for depth map generation too?) help in areas of bubbling and noise?
+**** TODO does chromatic aberration correction actually hinder it?
+**** TODO priority annotations?
+*** TODO Improve cross-section area script -> abyss-robotics examples
+**** TODO Inspect data format from Taj
+**** TODO Implement robust checking for bad points, other cross-sections, etc
+*** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+*** TODO =robotics-stages= improvements
+**** TODO robotics-stages: add chunk id global configurable
+**** TODO add a robotics-stages stage for incremental alignment
+**** TODO add a robotics-stages stage for disabling innacurate scalebars
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO start a confluence page on scaling processing
+**** TODO current pain points
+**** TODO predicted pain points and barriers to scaling
+*** TODO add comma & snark wiki to software
+** <2021-08-11 Wed> - fix bad reconstructions, robotics-validate improvements
+*** TODO robotics-validate improvements
+**** TODO plot dropped images
+**** TODO check if matplotlib can deal with large amounts of data
+**** TODO make plots bigger
+**** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
+*Algo:*
+- find first image
+  - find literal earliest and look within 2*jitter for other cameras, average if there are any
+- while there are still images in at least one camera:
+  - for camera in cameras:
+    - if at end of list:
+      - record a missed frame
+    - look for index of timestamp most closely matching desired timestamp
+    - if no match:
+      - if next timestamp too far ahead:
+        - *record a miss*
+      - else (next timestamp too early):
+        - while next timestamp < expected timestamp:
+          - *record an unexpected frame*
+          - increment index
+    - else (there was a match):
+      - if index moved more than one step:
+        - for index after previous and before match:
+          - *record an unexpected frame*
+      - update index
+      - return/save new timestamp (for averaging)
+  - Average timestamps and update expected timestamp
+*** DONE copy ml7 bending shoe chain back to pond
+*** DONE fix texture on ml8-15 ocn002 model
+*** TODO investigate fixes for bad reconstructions
+Set up and conduct a proper test, with documentation
+**** TODO do quality settings (lower qual depth maps) help or hurt?
+**** TODO would using masks (for depth map generation too?) help in areas of bubbling and noise?
+**** TODO does chromatic aberration correction actually hinder it?
+**** TODO priority annotations?
+*** TODO Improve cross-section area script -> abyss-robotics examples
+**** TODO Inspect data format from Taj
+**** TODO Implement robust checking for bad points, other cross-sections, etc
+*** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+*** TODO =robotics-stages= improvements
+**** TODO robotics-stages: add chunk id global configurable
+**** TODO add a robotics-stages stage for incremental alignment
+**** TODO add a robotics-stages stage for disabling innacurate scalebars
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO start a confluence page on scaling processing
+**** TODO current pain points
+**** TODO predicted pain points and barriers to scaling
+*** TODO add comma & snark wiki to software
+** <2021-08-12 Thu> - robotics-validate improvements, check bad reconstructions
+*** TODO robotics-validate improvements
+**** TODO plot dropped images
+**** TODO check if matplotlib can deal with large amounts of data
+**** TODO make plots bigger
+**** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
 
+*Algo:*
+- find first image *(f)*
+  - find literal earliest and look within 2*jitter for other cameras, average if there are any
+  - this is the /reference timestamp/
+- while there are still images in at least one camera:
+  - for camera in cameras:
+    - if at end of list:
+      - record a missed frame
+    - look for index of timestamp most closely matching desired timestamp
+    - if no match:
+      - if next timestamp too far ahead:
+        - *record a miss*
+      - else (next timestamp too early):
+        - while next timestamp < expected timestamp:
+          - *record an unexpected frame*
+          - increment index
+    - else (there was a match):
+      - if index moved more than one step:
+        - for index after previous and before match:
+          - *record an unexpected frame*
+      - update index
+      - return/save new timestamp (for averaging)
+  - Average timestamps and update expected timestamp
+ 
+***** DONE read data in correctly
+
+*** TODO investigate fixes for bad reconstructions
+Set up and conduct a proper test, with documentation
+**** TODO do quality settings (lower qual depth maps) help or hurt?
+**** TODO would using masks (for depth map generation too?) help in areas of bubbling and noise?
+**** TODO does chromatic aberration correction actually hinder it?
+**** TODO priority annotations?
+*** DONE email suchet
+*** TODO transform points
+/mnt/rapid/scratch/bigbrains/flare-stacks - data is here
+*** TODO ask lash about localisation
+*** TODO Improve cross-section area script -> abyss-robotics examples
+**** TODO Inspect data format from Taj
+**** TODO Implement robust checking for bad points, other cross-sections, etc
+*** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+*** TODO =robotics-stages= improvements
+**** TODO robotics-stages: add chunk id global configurable
+**** TODO add a robotics-stages stage for incremental alignment
+**** TODO add a robotics-stages stage for disabling innacurate scalebars
+*** TODO review calibration script
+*** TODO start a confluence page re: transitioning to python
+*** TODO start a confluence page on scaling processing
+**** TODO current pain points
+**** TODO predicted pain points and barriers to scaling
+*** TODO add comma & snark wiki to software
+** <2021-08-13 Fri> - robotics-validate improvements, fix bad reconstructions
+*** TODO robotics-validate improvements
+**** TODO plot dropped images
+**** TODO check if matplotlib can deal with large amounts of data
+**** TODO make plots bigger
+**** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
+
+*Algo:*
+- find first image *(f)*
+  - find literal earliest and look within 2*jitter for other cameras, average if there are any
+  - this is the /reference timestamp/
+- while there are still images in at least one camera:
+  - for camera in cameras:
+    - if at end of list:
+      - record a missed frame
+    - look for index of timestamp most closely matching desired timestamp
+    - if no match:
+      - if next timestamp too far ahead:
+        - *record a miss*
+      - else (next timestamp too early):
+        - while next timestamp < expected timestamp:
+          - *record an unexpected frame*
+          - increment index
+    - else (there was a match):
+      - if index moved more than one step:
+        - for index after previous and before match:
+          - *record an unexpected frame*
+      - update index
+      - return/save new timestamp (for averaging)
+  - Average timestamps and update expected timestamp
+ 
+***** DONE read data in correctly
+
+*** TODO investigate fixes for bad reconstructions
+Set up and conduct a proper test, with documentation
+**** TODO do quality settings (lower qual depth maps) help or hurt?
+**** TODO would using masks (for depth map generation too?) help in areas of bubbling and noise?
+**** TODO does chromatic aberration correction actually hinder it?
+**** TODO priority annotations?
+*** DONE try to improve ml8-ground-chain
+We can't seem to build a big dense cloud, so it looks like our options are
+*** DONE fix LP bug
+*** TODO transform points
+/mnt/rapid/scratch/bigbrains/flare-stacks - data is here
+*** DONE ask lash about localisation
+*** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+*** TODO =robotics-stages= improvements
+**** DONE robotics-stages: add chunk id global configurable
+**** TODO add a robotics-stages stage for incremental alignment
+**** TODO add a robotics-stages stage for disabling innacurate scalebars
+*** TODO review calibration script
+*** DONE start a confluence page re: transitioning to python
+*** DONE start a confluence page on scaling processing
+**** TODO current pain points
+**** TODO predicted pain points and barriers to scaling
+*** TODO add comma & snark wiki to software
+* Week starting <2021-08-16 Mon>
+** <2021-08-16 Mon> - BP005 finalisation
+*** DONE make /"old link numbers"/ column on tracker spreadsheet
+*** DONE get daniel going with cleaning
+*** DONE copy ml7 back to pond
+*** DONE update example stages config
+*** DONE push code to git
+*** DONE fix textures
+**** DONE write small utility to correctly rename 3D models
+**** DONE ml8 ground chain links 4 and 5
+**** DONE ml5 ground chain
+*** DONE transfer OCN002 to files.com
+*** DONE build texture for ml8-ground-chain
+Fix metashape-cli
+*** TODO transform points
+/mnt/rapid/scratch/bigbrains/flare-stacks - data is here
+*** TODO lash's localisation PR
+*** TODO ml6-bending-shoe link below with masks doesn't seem to have masks?
+*** TODO robotics-validate improvements
+**** TODO plot dropped images
+**** TODO install configs to /etc and allow user to specify
+**** TODO check if matplotlib can deal with large amounts of data
+**** TODO make plots bigger
+**** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
+
+*Algo:*
+- find first image *(f)*
+  - find literal earliest and look within 2*jitter for other cameras, average if there are any
+  - this is the /reference timestamp/
+- while there are still images in at least one camera:
+  - for camera in cameras:
+    - if at end of list:
+      - record a missed frame
+    - look for index of timestamp most closely matching desired timestamp
+    - if no match:
+      - if next timestamp too far ahead:
+        - *record a miss*
+      - else (next timestamp too early):
+        - while next timestamp < expected timestamp:
+          - *record an unexpected frame*
+          - increment index
+    - else (there was a match):
+      - if index moved more than one step:
+        - for index after previous and before match:
+          - *record an unexpected frame*
+      - update index
+      - return/save new timestamp (for averaging)
+  - Average timestamps and update expected timestamp
+ 
+***** DONE read data in correctly
+*** TODO *tech debt* (longer term, opportunistic stuff)
+**** TODO message Jackson
+**** TODO look at positions that want a PhD on seek
+**** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+**** TODO =robotics-stages= improvements
+***** DONE robotics-stages: add chunk id global configurable
+***** TODO add a robotics-stages stage for incremental alignment
+***** TODO add a robotics-stages stage for disabling innacurate scalebars
+**** TODO review calibration script
+**** TODO add comma & snark wiki to software
+** <2021-08-17 Tue> - BP005 finalisation
+*** TODO gbbv
+**** TODO unzip Jordan's model
+**** TODO compare accuracies
+**** TODO reconstruct without interpolation?
+*** TODO fix ml7 textures
+*** TODO make sure there is a low-poly version of every chain for Usman
+*** TODO transform points
+/mnt/rapid/scratch/bigbrains/flare-stacks - data is here
+can't seem to get this to work?
+*** DONE platypus process overview
+**** TODO prepare examples of data products
+*** TODO lash's localisation PR
+*** TODO ml6-bending-shoe link below with masks doesn't seem to have masks?
+*** TODO robotics-validate improvements
+**** TODO plot dropped images
+**** TODO install configs to /etc and allow user to specify
+**** TODO check if matplotlib can deal with large amounts of data
+**** TODO make plots bigger
+**** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
+
+*Algo:*
+- find first image *(f)*
+  - find literal earliest and look within 2*jitter for other cameras, average if there are any
+  - this is the /reference timestamp/
+- while there are still images in at least one camera:
+  - for camera in cameras:
+    - if at end of list:
+      - record a missed frame
+    - look for index of timestamp most closely matching desired timestamp
+    - if no match:
+      - if next timestamp too far ahead:
+        - *record a miss*
+      - else (next timestamp too early):
+        - while next timestamp < expected timestamp:
+          - *record an unexpected frame*
+          - increment index
+    - else (there was a match):
+      - if index moved more than one step:
+        - for index after previous and before match:
+          - *record an unexpected frame*
+      - update index
+      - return/save new timestamp (for averaging)
+  - Average timestamps and update expected timestamp
+ 
+***** DONE read data in correctly
+*** TODO *tech debt* (longer term, opportunistic stuff)
+**** TODO message Jackson
+**** TODO look at positions that want a PhD on seek
+**** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+**** TODO =robotics-stages= improvements
+***** DONE robotics-stages: add chunk id global configurable
+***** TODO add a robotics-stages stage for incremental alignment
+***** TODO add a robotics-stages stage for disabling innacurate scalebars
+**** TODO review calibration script
+**** TODO add comma & snark wiki to software
+** <2021-08-18 Wed> - BP005 finalisation
+*** TODO gbbv
+**** DONE unzip Jordan's model
+**** TODO compare ground truths to Jordan's model with Tajamul
+**** TODO cut half the images out of one of the half chunks
+**** TODO reconstruct without interpolation?
+**** DONE export a good model for T
+*** DONE fix ml7 textures
+*** DONE make sure there is a low-poly version of every chain for Usman
+*** TODO transform points
+/mnt/rapid/scratch/bigbrains/flare-stacks - data is here
+can't seem to get this to work? - I think there's some irrelevant data here though, need to clean the bigbrains scratch directory and just keep the important stuff
+*** TODO lash's localisation PR
+*** TODO ml6-bending-shoe link below with masks doesn't seem to have masks?
+*** TODO robotics-validate improvements
+**** TODO plot dropped images
+**** TODO install configs to /etc and allow user to specify
+**** TODO check if matplotlib can deal with large amounts of data
+**** TODO make plots bigger
+**** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
+
+*Algo:*
+- find first image *(f)*
+  - find literal earliest and look within 2*jitter for other cameras, average if there are any
+  - this is the /reference timestamp/
+- while there are still images in at least one camera:
+  - for camera in cameras:
+    - if at end of list:
+      - record a missed frame
+    - look for index of timestamp most closely matching desired timestamp
+    - if no match:
+      - if next timestamp too far ahead:
+        - *record a miss*
+      - else (next timestamp too early):
+        - while next timestamp < expected timestamp:
+          - *record an unexpected frame*
+          - increment index
+    - else (there was a match):
+      - if index moved more than one step:
+        - for index after previous and before match:
+          - *record an unexpected frame*
+      - update index
+      - return/save new timestamp (for averaging)
+  - Average timestamps and update expected timestamp
+ 
+***** DONE read data in correctly
+*** TODO *tech debt* (longer term, opportunistic stuff)
+**** TODO make usage examples only print with verbose for lantern tools
+**** TODO message Jackson
+**** TODO look at positions that want a PhD on seek
+**** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+**** TODO =robotics-stages= improvements
+***** DONE robotics-stages: add chunk id global configurable
+***** TODO add a robotics-stages stage for incremental alignment
+***** TODO add a robotics-stages stage for disabling innacurate scalebars
+**** TODO review calibration script
+**** TODO add comma & snark wiki to software
+** <2021-08-19 Thu> - BP005 finalisation
+*** DONE make sure there is a low-poly version of ml8 8-20 for Usman
+*** DONE run all ocn002 calibration models
+Check with Mitch first, is he already doing this? - *yes*
+*** DONE fix out-of-order ribf and rslidar libraries
+*** DONE [#A] lash's localisation PR
+*** DONE [#A] gimp script levels adjust
+*** TODO [#A] try to fix bad grip zones
+**** DONE ml6-bending-shoe-chain-below: dense cloud
+**** DONE ml6-bending-shoe-chain-above: dense cloud
+**** TODO ml6-bending-shoe-chain-above: model
+**** DONE ml5-bending-shoe-chain-below: dense cloud
+**** TODO ml5-bending-shoe-chain-below: model
+**** DONE ml8-bending-shoe-chain-link-8: separate seqview annotation
+**** TODO ml8-bending-shoe-chain-link-8: dense cloud
+**** TODO ml8-bending-shoe-chain-link-8: model
+*** TODO [#B] transform points
+/mnt/rapid/scratch/bigbrains/flare-stacks - data is here
+can't seem to get this to work? - I think there's some irrelevant data here though, need to clean the bigbrains scratch directory and just keep the important stuff
+*** TODO [#C] archive stuff for jeff
+*** TODO gbbv
+**** DONE unzip Jordan's model
+**** TODO compare ground truths to Jordan's model with Tajamul
+**** TODO cut half the images out of one of the half chunks
+**** TODO reconstruct without interpolation?
+**** DONE export a good model for T
+*** TODO ml6-bending-shoe link below with masks doesn't seem to have masks?
+*** TODO robotics-validate improvements
+**** TODO plot dropped images
+**** TODO install configs to /etc and allow user to specify
+**** TODO check if matplotlib can deal with large amounts of data
+**** TODO make plots bigger
+**** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
+
+*Algo:*
+- find first image *(f)*
+  - find literal earliest and look within 2*jitter for other cameras, average if there are any
+  - this is the /reference timestamp/
+- while there are still images in at least one camera:
+  - for camera in cameras:
+    - if at end of list:
+      - record a missed frame
+    - look for index of timestamp most closely matching desired timestamp
+    - if no match:
+      - if next timestamp too far ahead:
+        - *record a miss*
+      - else (next timestamp too early):
+        - while next timestamp < expected timestamp:
+          - *record an unexpected frame*
+          - increment index
+    - else (there was a match):
+      - if index moved more than one step:
+        - for index after previous and before match:
+          - *record an unexpected frame*
+      - update index
+      - return/save new timestamp (for averaging)
+  - Average timestamps and update expected timestamp
+ 
+***** DONE read data in correctly
+*** TODO *tech debt* (longer term, opportunistic stuff)
+**** TODO make usage examples only print with verbose for lantern tools
+**** TODO make lantern-photogrammetry not delete every fucking thing
+**** TODO message Jackson
+**** TODO look at positions that want a PhD on seek
+**** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+**** TODO =robotics-stages= improvements
+***** DONE robotics-stages: add chunk id global configurable
+***** TODO add a robotics-stages stage for incremental alignment
+***** TODO add a robotics-stages stage for disabling innacurate scalebars
+**** TODO review calibration script
+**** TODO add comma & snark wiki to software
+** <2021-08-19 Thu> - BP005 finalisation
+*** DONE 20 link inspection video for JJ
+*** DONE uncertainty analysis
+**** DONE how to do?
+And can it all be done today
+operations/depricated/
+**** DONE review and improve distance to object script
+**** DONE set up uncertainty analysis spreadsheet
+***** DONE BP005
+***** DONE OCN002
+**** DONE Fill out scale bar distances from val units
+***** DONE BP005
+***** DONE get mitch to do OCN002
+**** DONE pick 3 models from:
+***** DONE BP005
+***** DONE OCN002
+**** DONE run distance to object on:
+***** DONE BP005 val units
+***** DONE BP005 models
+***** DONE OCN002 val units
+***** DONE OCN002 models
+**** DONE Complete Spreadsheets for:
+***** DONE BP005
+***** DONE OCN002
+*** DONE [#A] try to fix bad grip zones
+**** DONE ml6-bending-shoe-chain-below: dense cloud
+**** DONE ml6-bending-shoe-chain-above: dense cloud
+**** DONE ml6-bending-shoe-chain-above: model
+**** DONE ml6-bending-shoe-chain-above: texture
+**** DONE ml6-bending-shoe-chain-above: export
+**** DONE ml6-bending-shoe-chain-above: copy to reporting
+**** DONE ml5-bending-shoe-chain-below: dense cloud
+**** DONE ml5-bending-shoe-chain-below: rerun model
+**** DONE ml5-bending-shoe-chain-below: texture
+**** DONE ml8-bending-shoe-chain-link-8: separate seqview annotation
+**** DONE ml8-bending-shoe-chain-link-8: dense cloud
+**** DONE ml8-bending-shoe-chain-link-8: model
+* Week starting <2021-08-23 Mon>
+** <2021-08-23 Mon> - BP005 wrap-up, GBBV, start on Platypus
+*** DONE Wrap up BP005 documentation and PR
+*** DONE gbbv
+**** DONE unzip Jordan's model
+**** DONE compare ground truths to Jordan's model with Tajamul
+**** DONE export a good model for T
+**** DONE get Tajamul started
+*** TODO GHD007 processing
+** <2021-08-24 Tue> - GHD007 processing
+*** DONE start working with Daniel and Cici
+** <2021-08-25 Wed>
+*** TODO talk to:
+**** TODO Rolfe
+**** TODO Eric - msg about what he wants
+**** TODO Adam - 
+**** TODO Jordan - bonus
+** <2021-08-26 Thu> - GHD007
+** <2021-08-27 Fri> - GHD007
+* Week starting <2021-08-30 Mon>
+** <2021-08-30 Mon> - GHD007 processing, help Fraser
+*** DONE Fix GoPro SD card tool bug
+**** DONE talk to Fraser
+**** DONE fix up code on branch
+*** TODO GHD007 Processing
+**** TODO [#B] Generate video
+*** DONE *tech debt* (longer term, opportunistic stuff)
+**** DONE [#B] transform points
+/mnt/rapid/scratch/bigbrains/flare-stacks - data is here
+can't seem to get this to work? - I think there's some irrelevant data here though, need to clean the bigbrains scratch directory and just keep the important stuff
+ask Cici where the data is
+** <2021-08-31 Tue> - GHD007 processing
+** <2021-09-01 Wed> - GHD007
+*** DONE Make Platypus images actual jpgs
+*** DONE Ask imran about seqview deployment
+*** TODO Convert GBBV to step if possible
+** <2021-09-02 Thu> - GHD007 localisation, final video stuff
+** <2021-09-03 Fri> - GHD007 localisation, hopefully pointclouds
+*** DONE Push updated seqview video to production
+*** TODO Add diff check against reference frame timeline to generate frame timeline script
+*** TODO Localisation
+**** TODO View platypus pointclouds to establish where X, Y and Z are
+**** TODO Modify "view" routine to show pointcloud after expected transformation
+**** TODO Add capability to use pre-extracted data for speed
+**** DONE Try without ribf data, why is there a huge jump??
+Running out of scans!
+*** TODO Bathymetry
+**** TODO Check if Zdz's PR works
+*** TODO *tech debt* (longer term, opportunistic stuff)
+**** DONE [#B] transform points
+/mnt/rapid/scratch/bigbrains/flare-stacks - data is here
+can't seem to get this to work? - I think there's some irrelevant data here though, need to clean the bigbrains scratch directory and just keep the important stuff
+ask Cici where the data is
+**** TODO [#C] archive stuff for jeff
+**** TODO Are masks imported correctly?
+**** TODO save cross-section renaming script
+**** TODO improve gitconfig with zdz's stuff (in scratch)
+**** TODO robotics-validate improvements
+***** TODO plot dropped images
+***** TODO install configs to /etc and allow user to specify
+***** TODO check if matplotlib can deal with large amounts of data
+***** TODO make plots bigger
+***** TODO validate camera timestamps more cleverly
+- set expected framerate and tolerance in config
+- find dropped frames based on the above
+- plot per-camera time since previous frame
+- use that to identify frames that are too close
+
+*Algo:*
+- find first image *(f)*
+  - find literal earliest and look within 2*jitter for other cameras, average if there are any
+  - this is the /reference timestamp/
+- while there are still images in at least one camera:
+  - for camera in cameras:
+    - if at end of list:
+      - record a missed frame
+    - look for index of timestamp most closely matching desired timestamp
+    - if no match:
+      - if next timestamp too far ahead:
+        - *record a miss*
+      - else (next timestamp too early):
+        - while next timestamp < expected timestamp:
+          - *record an unexpected frame*
+          - increment index
+    - else (there was a match):
+      - if index moved more than one step:
+        - for index after previous and before match:
+          - *record an unexpected frame*
+      - update index
+      - return/save new timestamp (for averaging)
+  - Average timestamps and update expected timestamp
+ 
+***** DONE read data in correctly
+**** TODO make usage examples only print with verbose for lantern tools
+**** TODO make lantern-photogrammetry not delete every fucking thing
+**** TODO message Jackson
+**** TODO look at positions that want a PhD on seek
+**** TODO make a metashape-cli operation to disable all scalebars with abs(error) >= 0.001
+**** TODO =robotics-stages= improvements
+***** DONE robotics-stages: add chunk id global configurable
+***** TODO add a robotics-stages stage for incremental alignment
+***** TODO add a robotics-stages stage for disabling innacurate scalebars
+**** TODO review calibration script
+**** TODO add comma & snark wiki to software
+**** TODO fix combinational seqview category logi
+* Week starting <2021-09-06 Mon>
+** <2021-09-06 Mon> - Fix localisation bugs, symlink frames
+*** TODO Add diff check against reference frame timeline to generate frame timeline script
+*** TODO write script to match chainage into frame timeline
+*** TODO write script to add to annotations
+*** TODO Fix localisation issues
+**** DONE cull scans correctly
+**** TODO Extract only relevant data to ribf
+** <2021-09-08 Wed> - Finish remaining tools, continue localisation
+*** DONE Create localisation merging tool
+*** DONE Clean up daniel's chainage tool
+*** DONE Finish LiDAR tool
+*** DONE seqview category modifications for roshanthi
+*** TODO update platform config and rerun localisation
+*** TODO Look at raw velocity from realsense
+**** TODO If it is smoother, use that instead of the pose
+**** TODO Work out why adding ribf just makes it spin
+** <2021-09-09 Thu> - Fix localisation, Metashape for Toby
+*** TODO Get localisation working
+**** TODO Remove initial transform of pointclouds
+**** TODO Print x,y,z,roll,pitch,yaw
+*** TODO brighten images
+* Week starting <2021-09-13 Mon>
+** <2021-09-13 Mon> - Localisation improvements
+** <2021-09-14 Tue> - GHD007
+*** TODO Rope chainage to deployment
+*** TODO Correct for heading drift
+**** To tell Fraser
+Heading drift is an issue, are sensors close to high current cables?
+**** TODO Break tunnel into sections
+They may individually be straight
+**** TODO Reduce iterations further? Drop threshold in rocky sections?
+**** TODO Point to plane?
+**** TODO Average between given tunnel heading and heading from IMU
+**** TODO Filter out bad deltaPose
+*** TODO Write list of things for rolfe
+*** TODO Reconstruct sonar
+**** TODO Update from_body transform
+** <2021-09-17 Fri>
+*** TODO email
+*** TODO more iterations
+*** TODO lower threshold
+*** TODO slightly smaller dt
+*** TODO allow pitch and roll
+Do 3 on the discontinuity and 3 on the 
+*** TODO maximum ICP yaw change (relative to dead reckoning)
+* Week starting <2021-09-20 Mon>
+** <2021-09-20 Mon> - GHD007
+*** TODO Try starting one or two scans further in advance
+*** DONE 40 ish iterations -> good enough for both?
+*** DONE Allow only like 10% of the pitch/roll that ICP produces. Any improvement?
+*** DONE Use true dt from delta timestamp, not dt from config
+*** DONE If ICP does not converge, jump to next scan
+*** TODO Remove ghosting - is there a tool?
+* Week starting <2021-09-27 Mon>
+** <2021-09-28 Tue> - GHD007 and lots of meetings
+** <2021-09-29 Wed> - Catch up on OCN003 kickoff, GHD007
+*** TODO Speed up localisation
+**** TODO Try to integrate =abyss.bedrock.io= rather than the =rslidar= library
+- How much faster?
+- Does ribf need a similar thing?
+**** TODO Watch OCN003 kickoff
+** <2021-09-30 Thu> - OCN003 kickoff, final rocky section
+*** TODO Make confluence page for LiDAR and sonar reconstructions
+**** TODO send Lash a link to that
+**** DONE run section 6 sonar
+*** TODO watch OCN003 kickoff
+*** DONE submit leave
+*** DONE image-stream-merge thing
+*** DONE see if --view works over ssh with glfw installed
+*** TODO fix the thing stan found
+*** DONE localise final rocky section
+*** DONE polish section 6 for submission
+**** DONE Load clouds in CC
+**** DONE Clean as required
+**** DONE Export as PLY
+**** DONE Open in meshlab
+**** DONE export as OBJ
+* Week starting <2021-10-04 Mon> (Labour day public holiday)
+** <2021-10-05 Tue> - Help with OCN003, GHD007 demob, prep for handovers
+*** TODO GHD007 demob
+**** TODO Copy data back to rapid
+*** DONE ml7 model from dense cloud
+*** DONE review Mitch's PR
+*** TODO Create/update confluence pages before handovers
+** <2021-10-06 Wed> - GHD007 wrap-up/debrief
+*** DONE GHD007 debrief meeting
+*** DONE Create/update confluence pages before handovers
+**** DONE GHD007 - add important utils from projects repo
+**** DONE Platypus Data Processing - link to GHD007
+**** DONE Lantern Eye Data Processing - link to BP005
+*** TODO Find which parameters need to change to stop Metashape from being killed
+*** DONE Look at Lash's PR
+** <2021-10-07 Thu> - faster localisation parsing
+*** TODO Write script to:
+- extract rslidar bin
+- extract ribf
+- create localisation bins from ribf
+*** TODO Improve localisation parsing speed
+*** TODO Clean code and submit for review
+* Week starting <2021-10-11 Mon>
+** <2021-10-11 Mon> - Localisation improvements
+** <2021-10-12 Tue> - PI 1, OCN003 meeting, Fraser's changes to PSC
+** <2021-10-13 Wed> - PI 2, Changes to PSC, OCN003 ml2
+** <2021-10-14 Thu> - Continuous leraning, PSC, OCN003 uncertainty
+*** DONE OCN003 Uncertainty Analysis
+**** TODO Make distance to asset script print rms errors
+Not possible :(
+**** DONE Update/improve documentation if necessary
+*** TODO PSC improvements
+- Don't forget to add the transparency!
+- Then try cv-cat overlay
+- If that doesn't work, try ffmpeg overlay
+*** TODO Start working on Corrosion diff tool
+** <2021-10-15 Fri> - Final PSC stuff, OCN003 uncertainty wrap-up, Start continuous learning
+*** DONE OCN003 Uncertainty Analysis
+**** DONE Move video to correct place on gdrive
+**** DONE Change to mm
+**** DONE Submit PR for distance-to-model
+*** TODO Final PSC stuff
+**** DONE Make a very cut down file to test on
+**** DONE Submit image-stream-merge PR
+**** DONE Make it not need to be C-c'ed to finish the video
+**** DONE Clean up temp files
+**** TODO Update --help with new --view stuff
