@@ -883,7 +883,6 @@ e.g. python vs bash
 *** TODO processing
 **** TODO ml8-ground-chain
 ** <2021-07-16 Fri> - BP005 processing automation
-** TODO 
 * Week starting <2021-07-19 Mon>
 ** <2021-07-19 Mon> - BP005 processing, seqview metadata
 *** DONE reduce the amount of output from waiting for files
@@ -1765,9 +1764,146 @@ Not possible :(
 **** DONE Move video to correct place on gdrive
 **** DONE Change to mm
 **** DONE Submit PR for distance-to-model
-*** TODO Final PSC stuff
+*** DONE Final PSC stuff
 **** DONE Make a very cut down file to test on
 **** DONE Submit image-stream-merge PR
 **** DONE Make it not need to be C-c'ed to finish the video
 **** DONE Clean up temp files
-**** TODO Update --help with new --view stuff
+**** DONE Update --help with new --view stuff
+* Week starting <2021-10-18 Mon>
+** <2021-10-18 Mon> - Polish PSC, Start on mask deltas
+*** DONE Polish PSC after Fraser's changes
+*** TODO Play with =mask-calc= to get a feel for it
+*** TODO Discuss with Rolfe about moving mask-calc functionality to a library
+Only if it makes sense to do so.
+
+Also perhaps worth discussing where this new script would live.
+** <2021-10-21 Thu> - Fix bug from PR, Use mask intersections to create IOU
+*** DONE Fix =--output-fields= bug from Mitch's PR
+*** TODO Use list of mask intersections to construct IOU
+**** TODO Peep IOU logic from other scripts, hopefully there's one that uses =mask_intersections=
+*** TODO Start constructing high level logic flow in =coco-from-qc=
+*** TODO Continue checking if functions should be moved to existing libraries
+* Week starting <2021-10-25 Mon>
+** <2021-10-25 Mon> - Help Cici with OCN003, refine mask intersection logic
+*** TODO Downsample dense cloud for ML6 to help with alignment
+*** TODO Validate outputs of analysing the IOU matrix
+** <2021-10-26 Tue> - Debug mask intersection logic, get up to speed with creating cocos
+*** TODO Debug mask intersection logic
+Area of mask 0 and 1 os area of classifiaction not area of part id!
+**** DONE Confirm 100% that the intersection area is correct -> yes
+**** TODO replace areas with area of part id rather than classification
+**** TODO ask Rolfe about where multiprocessing should be done
+**** TODO determine whether mask intersections is even the best logic?
+*** TODO Work out how to create cocos from input images and masks
+**** =fabric-aggregate contours= seems to generate contours from binary masks
+**** =coco-from-csv= seems to take contours and generate json
+It then needs to use =coco-calc assign-new-image-ids= to fix ids or something
+** <2021-10-27 Wed> - Polish code for PR, code review, slides for demo, multiprocessing
+*** DONE Modify existing Jira ticket and create a new one for the coco part
+*** TODO Review existing cocos to determine what library functionality needs to be pulled out of existing tools
+If we write stuff in python this is not so necessary
+*** TODO Organise code review time
+*** TODO Ask Rolfe about multiprocessing
+*** DONE Make slides for demo
+* Week starting <2021-11-01 Mon>
+** <2021-11-01 Mon> - Creating COCOs
+*** TODO Change area returning logic in =mask_intersections= and remove logic from =coco_from_qc=
+** <2021-11-02 Tue> - More COCO creation hacking, Future Stages
+*** TODO Review Future Stages with robotics processing and MLOps in mind
+** <2021-11-03 Wed> - Finish and test coco creation
+* Week starting <2021-11-15 Mon>
+** <2021-11-18 Thu> - Validate TOTAL coco-from-qc outputs, pair programming speed improvements
+*** DONE change png outputs to jpg
+*** DONE design NMS algo
+*** TODO implement NMS
+** <2021-11-19 Fri> - Non max suppression, get into stages
+*** DONE Finish non max suppression
+*** DONE push fixes =generate_metrics.sh=
+*** TODO Get coco_from_qc into stages
+Work out how to get link keys to work
+*** TODO Add support for keys file
+- for stdin?
+* Week starting <2021-11-22 Mon>
+** <2021-11-22 Mon> - Test stages integration, refactor filesystem stuff, blank out images and masks, pytest
+*** DONE add note to stages config about keys on stdin
+*** TODO refactor =generate_metrics.sh= and put in stages
+*** TODO work out what =generate_metrics.sh= is actually doing
+*** TODO test stages integration (make it actually work)
+*** TODO make =coco_from_qc='s main take a list of filepaths instead of directories and/or keys
+*** TODO write unit tests
+** <2021-11-23 Tue> - coco_from_qc refactor and tests
+*** DONE set up environment on bruno (=update-repositories= with config without snark)
+*** TODO make =coco_from_qc='s main take a list of filepaths instead of directories and/or keys
+*** TODO write unit tests
+** <2021-11-24 Wed> - coco_from_qc refactor and tests
+*** DONE make =coco_from_qc='s main take a list of filepaths instead of directories and/or keys
+*** TODO move logic for finding files from directories to a generic library
+This way they can be used for multiple things
+*** TODO fix paths in coco["images"] - *implemented not tested*
+*** TODO add "added" or "removed" to crop names 
+*** TODO write unit tests
+*** DONE help Cici
+**** DONE Pitch LiDAR in platform config
+**** DONE add debug messages to show when realsense not being used
+**** DONE see what's up with realsense in RIBF
+**** DONE negate the velocity
+**** DONE does max velocity cause problems if negative
+** <2021-11-25 Thu> - coco_from_qc refactor and tests
+*** DONE move logic for finding files from directories to a generic library
+This way they can be used for multiple things
+**** DONE do something better than =rreplace= (see toby's review)
+*** DONE fix paths in coco["images"] - *implemented not tested*
+*** TODO add "added" or "removed" to crop names 
+*** TODO write unit tests
+** <2021-11-26 Fri> - coco_from_qc unit tests
+*** DONE add "added" or "removed" to crop names 
+*** TODO write unit tests
+*** TODO fix odd numbers bug when using --keys
+*** TODO discrete differentiate localisation as debugging method
+* Week starting <2021-11-29 Mon>
+** <2021-11-29 Mon> - coco_from_qc tests, odd numbers bug, localisation derivative
+*** TODO write unit tests
+keep only one mask, just flip it
+*** TODO remove or add deprecation note to =abyss_deep_learning.utils.mask_to_polygon=
+*** TODO fix odd numbers bug when using --keys
+*** DONE discrete differentiate localisation as debugging method
+* Week starting <2021-12-06 Mon>
+** <2021-12-06 Mon> - cfq -> stages, tests in venv, asset parts with Dan
+*** TODO run tests in venv
+*** DONE get =coco-from-qc= working with stages
+Set input data for =coco_from_qc= stage based on output structure of link keys stages
+*** TODO Work on asset parts with Dan
+*** TODO Try numba with mask_intersections
+*** TODO Write blog post
+** <2021-12-07 Tue> - numba speed improvements, blog post, points_to_polar
+*** TODO Unit tests review - fix last failing test
+*** DONE Review ZDZ's PR
+*** DONE Rerview Yuze's PR
+*** TODO Write blog post
+*** TODO Finish =points_to_polar= for Dan
+Try to use euler angles to simplify computation
+*** DONE Create an environment (Jupyter Notebook?) for testing functions with timeit
+*** DONE Copy 2 masks to george local
+*** DONE Test numba for mask_intersections
+*** TODO Test numba speed improvement for points_to_polar
+** <2021-12-08 Wed> - blog post, points_to_polar validation, fix last failing test, sprint demo
+*** DONE Unit tests review - fix last failing test
+*** DONE sprint demo
+*** DONE Validate that Toby's points to polar produces the same output as the CLI version
+*** DONE Write blog post
+** <2021-12-09 Thu> - Write transforms library
+*** DONE test speed of o3d vs just using numpy
+*** DONE Write =abyss.bedrock.spatial.transforms=
+*** DONE Compare =abyss.bedrock.spatial.transforms= to points-frame
+*** DONE Write unit tests for =bedrock.spatial.transforms=
+* Week starting <2021-12-13 Mon>
+** <2021-12-13 Mon> - Jordan's Metashape problem, unit tests for old code, review Eric's HDF5 stuff
+*** DONE Investigate Jordan's Metashape problem
+*** TODO Write unit tests for =conversions.py=
+*** TODO Review Eric's HDF5 PR
+** <2021-12-14 Tue> - Unit tests for conversions, review Eric's PR, merge other PRs, polish prefect boilerplate code
+*** TODO Write unit tests for =conversions.py=
+*** TODO Review Eric's HDF5 PR
+*** TODO Merge other PRs
+*** TODO Polish prefect boilerplate code

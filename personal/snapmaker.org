@@ -1,0 +1,38 @@
+* Laser Cutting
+** Optimal settings for materials
+*** Cardboard
+**** 2mm thick corrugated cardboard (snapmaker linear module box)
+***** Cutting
+- 1 pass
+- 75mm/min work speed
+- 100% power
+***** Engraving
+- fill interval: 0.14mm
+- dwell time: 5ms/dot
+- laser power: 60%
+**** 6mm thick corrugated cardboard
+***** Cutting
+- 3 passes
+- 75 mm/min work speed
+- 100% power
+***** Engraving
+*** Plastic
+**** Polycarbonate box, 2-3mm thick
+***** Cutting
+- 3 passes
+- 0.6mm z step per pass
+- 100% power
+- 100mm/min work speed
+*** Foam
+**** Black packing foam that came with snapmaker (28mm thick)
+***** Cutting
+- 2 passes
+- Work speed: 120mm/min *but should try faster*
+- 0.6mm z step per pass
+- 100% power
+***** partial cutting (e.g. to make plucking squares)
+- 1 pass
+- 140mm/min work speed
+- 30% laser power
+
+

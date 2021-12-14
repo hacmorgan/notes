@@ -1,0 +1,33 @@
+* Machine Learning
+** [[https://openaccess.thecvf.com/content/CVPR2021/papers/Valverde_There_Is_More_Than_Meets_the_Eye_Self-Supervised_Multi-Object_Detection_CVPR_2021_paper.pdf][There is More than Meets the Eye: Self-Supervised Multi Object Detection]]
+*** Summary
+They used the /teacher-student/ strategy to train a model to recognise objects by sound, using networks that detect objects by other modalities.
+
+Multimodal input data:
+  - RGB     (768x768x3)
+  - Depth   (768x768x3)
+  - Thermal (768x768x1)
+  - Audio   (768x768x8) -> spectrogram, presumably 768 samples/frame and 768 frequency bands
+
+*** Methodology
+**** Teacher networks
+- Each teacher network takes a specific modality *alone* as input.
+- The teachers are trained on pre-existing datasets to predict bounding boxes.
+- The predictions of the teacher networks are combined to produce the labels.
+
+**** Student network
+- Input is a microphone *array* (8 channel)
+
+**** Data
+- Came from a driving dataset
+- 113000 time-synchronised frames for each channel
+- *Unlabeled video* -> only training was of the teacher networks
+
+*** Results
+- Outperformed the state of the art
+- Worked even while moving, where previous work was only effective using:
+  - static camera
+  - detecting a single object
+  - stereo sound (/did the array make a big difference here?/)
+  - metadata containing camera pose as input
+
