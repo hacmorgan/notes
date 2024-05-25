@@ -262,3 +262,24 @@ importlib.reload(packageName)
 See [[https://github.com/hacmorgan/one-offs/blob/main/franklynne-weight/calc_weight.py][calc_weight.py]]
 ** Plotting data with dates as x axis
 See [[https://github.com/hacmorgan/one-offs/blob/main/franklynne-weight/calc_weight.py][calc_weight.py]]
+* Linux/UNIX
+** Booting and chrooting into an Arch live USB
+e.g. for system maintenance, to fix a broken package update, etc
+
+1. Boot live USB
+2. Mount filesystems (using bisous' NVMe as an example)
+   #+begin_src shell
+     mount         /dev/nvme0n1p3 /mnt       # root
+     mount --mkdir /dev/nvme0n1p1 /mnt/boot  # efi
+     swapon        /dev/nvme0n1p2            # swap
+   #+end_src
+3. Chroot into system
+   #+begin_src shell
+     arch-chroot /mnt
+   #+end_src
+4. Exit and unmount
+   #+begin_src shell
+     exit  # leave chroot
+     umount -R /mnt
+   #+end_src
+      
