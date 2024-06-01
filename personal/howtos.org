@@ -267,19 +267,39 @@ See [[https://github.com/hacmorgan/one-offs/blob/main/franklynne-weight/calc_wei
 e.g. for system maintenance, to fix a broken package update, etc
 
 1. Boot live USB
+
 2. Mount filesystems (using bisous' NVMe as an example)
    #+begin_src shell
      mount         /dev/nvme0n1p3 /mnt       # root
      mount --mkdir /dev/nvme0n1p1 /mnt/boot  # efi
      swapon        /dev/nvme0n1p2            # swap
    #+end_src
+
 3. Chroot into system
    #+begin_src shell
      arch-chroot /mnt
    #+end_src
+
 4. Exit and unmount
    #+begin_src shell
      exit  # leave chroot
      umount -R /mnt
    #+end_src
       
+* Salt
+** Changing users, UIDs, installing programs (I think) etc
+
+1. ssh into the salt server
+#+begin_src bash
+  ssh -J hippo hamish@salt.abyss.internal
+#+end_src
+
+2. Pull latest git changes
+#+begin_src bash
+  (cd /srv/salt && git pull)
+#+end_src
+
+3. Run the update
+#+begin_src bash
+  sudo salt -G 'roles:onprem' state.apply base.users
+#+end_src
