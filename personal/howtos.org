@@ -123,26 +123,6 @@ n.b. this can also be done with the =dolist= macro
 #+begin_src emacs-lisp
 ?Q
 #+end_s#<buffer howtos.org>rc
-* find ips and hostnames on network
-/courtesy of Tek/
-** Find IPs on LAN:
-Here we will use =nmap= to scan the network for IPs. The manual shows the many possible ways of specifying address ranges, using different protocols, etc.
-
-In this example, we will use ping packets on the abyss network, like so:
-#+begin_src bash 
-nmap -sn 10.137.5.240/24
-#+end_src
-
-This will give us more output than we need, including latency, so we will extract only the IPs like so
-#+begin_src bash
-nmap -sn 10.137.5.240/24 | grep "scan " | cut -d" " -f5
-#+end_src
-
-** Find hostnames corresponding to IPs
-Now that we have a list of IPs (lets say we redirected the output of the above command to /ips.txt/), we can use =avahi-resolve-address= to extract the corresponding hostnames.
-#+begin_src bash
-cat ips | while read s; do avahi-resolve-address $s; done
-#+end_src
 * GDB
 ** The basics
 *** Compile program with support for GDB
@@ -286,6 +266,32 @@ e.g. for system maintenance, to fix a broken package update, etc
      umount -R /mnt
    #+end_src
       
+** find ips and hostnames on network
+/courtesy of Tek/
+*** Find IPs on LAN:
+Here we will use =nmap= to scan the network for IPs. The manual shows the many possible ways of specifying address ranges, using different protocols, etc.
+
+In this example, we will use ping packets on the abyss network, like so:
+#+begin_src bash 
+nmap -sn 10.137.5.240/24
+#+end_src
+
+This will give us more output than we need, including latency, so we will extract only the IPs like so
+#+begin_src bash
+nmap -sn 10.137.5.240/24 | grep "scan " | cut -d" " -f5
+#+end_src
+
+*** Find hostnames corresponding to IPs
+Now that we have a list of IPs (lets say we redirected the output of the above command to /ips.txt/), we can use =avahi-resolve-address= to extract the corresponding hostnames.
+#+begin_src bash
+  cat ips | while read s; do avahi-resolve-address $s; done
+#+end_src
+** SSH forwarding
+Like VSCode does when you click an IP address over a remote session
+#+begin_src bash
+  ssh -L <local_port>:<remote_port>:<remote_host> <username>@<remote_ip>
+  # e.g. ssh -L 4200:4200:127.0.0.1 diego
+#+end_src
 * Salt
 ** Changing users, UIDs, installing programs (I think) etc
 

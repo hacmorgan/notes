@@ -83,7 +83,13 @@ making sense of the more contemporary documentation
 ** FreeCAD
 *** TODO Tutorial
 *** TODO Metrology
-** Server
+** Wii Balance Board espresso force meter
+- ~python-xwiimote-git~ and ~xwiimote~ AUR packages can be used to interface with wii balance board
+  - Uses bluetooth
+  - Batteries?
+- Take load cell out?
+  - Look up load cell datasheet
+** TODO Server
 *** Components
 |-------------------------------+----------+------+----------------------------------------------------------------|
 | Name                          | Quantity | Cost | Description / Notes                                            |
@@ -124,34 +130,6 @@ Order components
   - a microprocessor (e.g. 6502), using assembly
   - from scratch like the 8-bit computer.
 - Probably need to watch a few more videos before doing this
-* Abyss
-** Lantern processing with Python
-This encompasses a transition to using Python for the Lantern-Eye processing
-*** TODO *Stage 0*: Metashape?
-Compare Metashape to open-source competitors. Any competitor *must have an API*.
-**** TODO Download a test dataset
-**** TODO Compare Metashape to competitors
-Compare on:
-- Reconstruction performance
-- Processing time
-- Configurability
-- Can do a calibration?
-*** TODO *Stage 1*: API
-Create an API with standard routines and helper functions for the stage 2 things. Should have pretty much all of the features of =metashape-cli=
-**** TODO Have prerolled routines that are easy to call and abstract as much as possible
-**** TODO Fully leverage progress callback
-**** TODO Print progress in a clever way
-*** TODO *Stage 2A*: CLI
-Full Python implementation of metashape-cli
-- Should exclusively call library functions
-- must have usage examples
-- must be logically structured and easy to use
-*** TODO *Stage 2B*: Prefect workflow orchestration API and frontend
-Want to make a flexible but easily configured workflow orchestration system, with the aim that only a single file needs configuration before the user simply hits go.
-This should be structured as a library, such that in future it can be imported and called from Python.
-**** TODO Make a TUI frontend for it
-*** TODO *Stage 3* (bonus): Replace comma and snark
-*** TODO *Stage 4* (bonus): Automate manual stuff
 * Other people's projects
 ** Tour Calculator
 ** Karen blockchain
