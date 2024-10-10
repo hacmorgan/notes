@@ -1,5 +1,87 @@
 A collection of random how-to's, to avoid having to re-find stuff on google.
 
+* System setup & maintenance
+** Standard bootstrap with ~hq~
+#+begin_src shell
+# Standard bootstrap from hq
+sysbs -s
+#+end_src
+** Booting and chrooting into an Arch live USB
+e.g. for system maintenance, to fix a broken package update, etc
+
+1. Boot live USB
+
+2. Mount filesystems (using bisous' NVMe as an example)
+   #+begin_src shell
+   mount         /dev/nvme0n1p3 /mnt       # root
+   mount --mkdir /dev/nvme0n1p1 /mnt/boot  # efi
+   swapon        /dev/nvme0n1p2            # swap
+   #+end_src
+
+3. Chroot into system
+   #+begin_src shell
+   arch-chroot /mnt
+   #+end_src
+
+4. Exit and unmount
+   #+begin_src shell
+   exit  # leave chroot
+   umount -R /mnt
+   #+end_src
+*** Mounting extra drives
+To mount e.g. an NTFS storage drive at boot, we add it to fstab
+
+This is super easy with the arch live ISO. After mounting the root, boot, and swap partitions (as in step 2 above), we mount the storage drive under ~/mnt/mnt~ before running ~genfstab~
+#+begin_src shell
+  # Mount storage drive
+  mount --mkdir /dev/sda2 /mnt/mnt/storage
+
+  # Check the generated fstab doesn't differ from the current fstab beyond the new mount
+  diff /mnt/etc/fstab <(genfstab -U /mnt)
+
+  # Write updated fstab
+  genfstab -U /mnt > /mnt/etc/fstab
+#+end_src
+** Configuring ~systemd-boot~
+*** Entry configs
+e.g. for arch 
+#+begin_src shell
+  title   Arch
+  linux   /vmlinuz-linux
+  initrd  /amd-ucode.img  # optional, as appropriate for hardware manufacturer
+  initrd  /initramfs-linux.img
+  options root=UUID=673c2ece-cd2d-49d7-8fb8-abf78009b61d rw nomodeset nvidia_drm.modeset=0
+#+end_src
+
+We can also specify a fallback image 
+#+begin_src shell
+title   Arch Fallback
+linux   /vmlinuz-linux
+initrd  /amd-ucode.img  # optional, as appropriate for hardware manufacturer
+initrd  /initramfs-linux-fallback.img
+options root=UUID=673c2ece-cd2d-49d7-8fb8-abf78009b61d rw nomodeset nvidia_drm.modeset=0
+#+end_src
+** ~zfs~
+*** on Ubuntu (20.04)
+**** Installing ~zfs~
+#+begin_src bash
+sudo apt install zfsutils-linux
+#+end_src
+*** Creating a (non-mirrored) pool
+#+begin_src bash
+sudo zpool create -m /mnt/storage storage /dev/sdb1
+#+end_src
+*** Import the desired pool
+By default, pools are unavailable until imported
+#+begin_src bash
+sudo zpool import # lists all pools
+sudo zpool import storage
+#+end_src
+*** Attach a new drive to mirror the first drive in the pool
+In this example, sdb1 is the original drive, and we are adding sda1
+#+begin_src bash
+sudo zpool attach storage /dev/sdb1 /dev/sda1
+#+end_src
 * ffmpeg
 ** extract frames from video
 This snippet will extract every frame of the video, to files with 4-digit names. There are ways to take only some of the images, and ways to increase performance in that situation too, on [[https://stackoverflow.com/questions/10957412/fastest-way-to-extract-frames-using-ffmpeg][Stack Overflow]].
@@ -22,7 +104,7 @@ The below code snippet adds 5 to the /begin/ and /end/ fields of every annotatio
 cat annotations.cvi.json | jq ".valid[].begin += 5 | .valid[].end += 5"
 #+end_src
 * emacs
-** view and set offset (indentation level) at a point in code
+** view and set offset (indentation level) at a point in codea
 Running the command below (or =C-c C-o=) will show you the name of the piece of syntax you're looking at, as well as its indentation level. Indentation level can take =--=, =-=, =0=, =+=, =++=
 #+begin_src emacs-lisp
 M-x c-set-offset <ret>
@@ -122,7 +204,28 @@ n.b. this can also be done with the =dolist= macro
 **** get integer representation of character (in this case, Q)
 #+begin_src emacs-lisp
 ?Q
-#+end_s#<buffer howtos.org>rc
+#+end_src
+* Network stuff
+** find ips and hostnames on network
+/courtesy of Tek/
+*** Find IPs on LAN:
+Here we will use =nmap= to scan the network for IPs. The manual shows the many possible ways of specifying address ranges, using different protocols, etc.
+
+In this example, we will use ping packets on the abyss network, like so:
+#+begin_src bash 
+nmap -sn 10.137.5.240/24
+#+end_src
+
+This will give us more output than we need, including latency, so we will extract only the IPs like so
+#+begin_src bash
+nmap -sn 10.137.5.240/24 | grep "scan " | cut -d" " -f5
+#+end_src
+
+*** Find hostnames corresponding to IPs
+Now that we have a list of IPs (lets say we redirected the output of the above command to /ips.txt/), we can use =avahi-resolve-address= to extract the corresponding hostnames.
+#+begin_src bash
+cat ips | while read s; do avahi-resolve-address $s; done
+#+end_src
 * GDB
 ** The basics
 *** Compile program with support for GDB
@@ -211,27 +314,6 @@ make
 sudo make install
 #+end_src
 
-* zfs
-** on Ubuntu (20.04)
-*** Installing zfs
-#+begin_src bash
-sudo apt install zfsutils-linux
-#+end_src
-*** Creating a (non-mirrored) pool
-#+begin_src bash
-sudo zpool create -m /mnt/storage storage /dev/sdb1
-#+end_src
-*** Import the desired pool
-By default, pools are unavailable until imported
-#+begin_src bash
-sudo zpool import # lists all pools
-sudo zpool import storage
-#+end_src
-*** Attach a new drive to mirror the first drive in the pool
-In this example, sdb1 is the original drive, and we are adding sda1
-#+begin_src bash
-sudo zpool attach storage /dev/sdb1 /dev/sda1
-#+end_src
 * python
 ** Reimport package (or source file) from interperter
 #+begin_src python
@@ -243,49 +325,6 @@ See [[https://github.com/hacmorgan/one-offs/blob/main/franklynne-weight/calc_wei
 ** Plotting data with dates as x axis
 See [[https://github.com/hacmorgan/one-offs/blob/main/franklynne-weight/calc_weight.py][calc_weight.py]]
 * Linux/UNIX
-** Booting and chrooting into an Arch live USB
-e.g. for system maintenance, to fix a broken package update, etc
-
-1. Boot live USB
-
-2. Mount filesystems (using bisous' NVMe as an example)
-   #+begin_src shell
-     mount         /dev/nvme0n1p3 /mnt       # root
-     mount --mkdir /dev/nvme0n1p1 /mnt/boot  # efi
-     swapon        /dev/nvme0n1p2            # swap
-   #+end_src
-
-3. Chroot into system
-   #+begin_src shell
-     arch-chroot /mnt
-   #+end_src
-
-4. Exit and unmount
-   #+begin_src shell
-     exit  # leave chroot
-     umount -R /mnt
-   #+end_src
-      
-** find ips and hostnames on network
-/courtesy of Tek/
-*** Find IPs on LAN:
-Here we will use =nmap= to scan the network for IPs. The manual shows the many possible ways of specifying address ranges, using different protocols, etc.
-
-In this example, we will use ping packets on the abyss network, like so:
-#+begin_src bash 
-nmap -sn 10.137.5.240/24
-#+end_src
-
-This will give us more output than we need, including latency, so we will extract only the IPs like so
-#+begin_src bash
-nmap -sn 10.137.5.240/24 | grep "scan " | cut -d" " -f5
-#+end_src
-
-*** Find hostnames corresponding to IPs
-Now that we have a list of IPs (lets say we redirected the output of the above command to /ips.txt/), we can use =avahi-resolve-address= to extract the corresponding hostnames.
-#+begin_src bash
-  cat ips | while read s; do avahi-resolve-address $s; done
-#+end_src
 ** SSH forwarding
 Like VSCode does when you click an IP address over a remote session
 #+begin_src bash
