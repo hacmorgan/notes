@@ -97,6 +97,15 @@ ffmpeg -i input.mp4 -ss 01:19:27 -to 02:18:51 -c:v copy -c:a copy output.mp4
 #+begin_src bash
 ffmpeg -i input.mp4 -ss 01:19:27 -t 00:01:05 -c:v copy -c:a copy output.mp4
 #+end_src
+** convert mp4 to gif
+#+begin_src bash
+#+end_src
+* regex
+** Convert enums and other types from their ~repr()~ form to native python
+This strips multiple occurrences of angle bracketed types back to their raw type name, as you would use to instantiate them directly
+#+begin_src regex
+  s#<\([a-zA-Z0-9\._-]*\): '[a-zA-Z0-9\._-]*'>#\1#g
+#+end_src
 * jq 
 ** adding an offset to all the annotations in a SeqView annotations.json
 The below code snippet adds 5 to the /begin/ and /end/ fields of every annotation in the /valid/ category
